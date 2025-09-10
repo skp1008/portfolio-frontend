@@ -12,6 +12,38 @@
       "dest": "/frontend/index.html"
     },
     {
+      "src": "/contact",
+      "dest": "/frontend/contact.html"
+    },
+    {
+      "src": "/projects",
+      "dest": "/frontend/projects.html"
+    },
+    {
+      "src": "/meter-form-processor",
+      "dest": "/frontend/meter-form-processor.html"
+    },
+    {
+      "src": "/single-occupancy-discount",
+      "dest": "/frontend/single-occupancy-discount.html"
+    },
+    {
+      "src": "/secondary-suite-exemption",
+      "dest": "/frontend/secondary-suite-exemption.html"
+    },
+    {
+      "src": "/water-consumption-anomaly",
+      "dest": "/frontend/water-consumption-anomaly.html"
+    },
+    {
+      "src": "/sql-query-generator",
+      "dest": "/frontend/sql-query-generator.html"
+    },
+    {
+      "src": "/(.*\\.(png|jpg|jpeg|gif|css|js|pdf))",
+      "dest": "/frontend/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/frontend/$1"
     }
