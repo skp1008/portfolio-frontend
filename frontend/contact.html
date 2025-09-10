@@ -300,33 +300,17 @@
         to_email: 'jaskp1008@gmail.com'
       };
       
-      try {
-        if (!emailjsConfigured) {
-          // EmailJS not configured - show demo message
-          statusEl.textContent = 'Demo Mode: Email functionality is disabled. Please email jaskp1008@gmail.com directly or use the copy button above.'; 
-          statusEl.className = 'note error';
-          return;
-        }
-        
-        // Send email using EmailJS with your actual credentials
-        const response = await emailjs.send(
-          'service_wg8sczm', // Your actual service ID
-          'template_rq8qhmb', // Your actual template ID
-          templateParams
-        );
-        
-        if (response.status === 200) {
+      // Send email using EmailJS
+      emailjs.send('service_wg8sczm', 'template_rq8qhmb', templateParams)
+        .then(function(response) {
           statusEl.textContent = 'Message sent successfully!'; 
           statusEl.className = 'note success'; 
           form.reset();
-        } else {
-          throw new Error('Email service error');
-        }
-      } catch (err) {
-        console.error('EmailJS Error:', err);
-        statusEl.textContent = 'Failed to send message. Please try again or email jaskp1008@gmail.com directly.'; 
-        statusEl.className = 'note error';
-      }
+        })
+        .catch(function(error) {
+          statusEl.textContent = 'Failed to send. Please email jaskp1008@gmail.com directly.'; 
+          statusEl.className = 'note error';
+        });
     });
   </script>
 </body>
