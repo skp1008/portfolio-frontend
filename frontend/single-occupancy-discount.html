@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOD Form Processor | City of Delta Tools</title>
+      <link rel="icon" type="image/png" href="/frontend/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Navbar mobile overrides */
+    @media (max-width: 768px) {
+      .navigation { padding: 10px 14px; flex-wrap: wrap; max-width: calc(100% - 16px); justify-content: center; }
+      nav a { font-size: 0.82rem; padding: 4px 8px; white-space: nowrap; }
+      .logo { height: 36px; }
+      .main-container { padding-top: 150px; }
+    }
+    @media (max-width: 480px) {
+      .navigation { padding: 6px 10px; gap: 6px; max-width: calc(100% - 12px); }
+      nav a { font-size: 0.7rem; padding: 2px 6px; }
+      .logo { height: 26px; }
+      .main-container { padding-top: 165px; }
+    }
+    @media (max-width: 400px) {
+      .navigation { padding: 6px 8px; gap: 4px; }
+      nav a { font-size: 0.64rem; padding: 2px 4px; }
+      .logo { height: 24px; }
+      .main-container { padding-top: 175px; }
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Navigation - Keep exactly the same */
+    .navigation {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.1);
+      backdrop-filter: blur(15px);
+      padding: 12px 25px;
+      border-radius: 50px;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+      filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3));
+      transition: all 0.3s ease;
+      object-fit: contain;
+      object-position: center;
+      cursor: pointer;
+    }
+
+    .logo:hover {
+      filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+      transform: scale(1.05);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, #0080ff);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      background: rgba(0, 255, 255, 0.1);
+    }
+
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(15px);
+      min-width: 200px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      z-index: 1000;
+      margin-top: 10px;
+      padding: 10px 0;
+    }
+
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border-radius: 0;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 255, 255, 0.1);
+      color: #00ffff;
+      transform: translateX(5px);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content:hover {
+      display: block;
+    }
+
+    /* Empty dropdown for alignment */
+    .dropdown.empty .dropdown-content {
+      display: none !important;
+    }
+
+    /* Horizontal Tech Background */
+    .tech-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .radar-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.6), transparent);
+      height: 1px;
+      animation: radar-sweep 3s infinite linear;
+    }
+
+    .radar-line:nth-child(1) {
+      top: 20%;
+      width: 100%;
+      animation-delay: 0s;
+    }
+
+    .radar-line:nth-child(2) {
+      top: 40%;
+      width: 100%;
+      animation-delay: 1s;
+    }
+
+    .radar-line:nth-child(3) {
+      top: 60%;
+      width: 100%;
+      animation-delay: 2s;
+    }
+
+    .radar-line:nth-child(4) {
+      top: 80%;
+      width: 100%;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes radar-sweep {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    .connection-node {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(0, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: node-pulse 3s infinite;
+    }
+
+    .connection-node:nth-child(5) {
+      top: 15%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .connection-node:nth-child(6) {
+      top: 35%;
+      right: 25%;
+      animation-delay: 1s;
+    }
+
+    .connection-node:nth-child(7) {
+      top: 55%;
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .connection-node:nth-child(8) {
+      top: 75%;
+      right: 15%;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes node-pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+      }
+    }
+
+    /* Radar circles for depth */
+    .radar-circle {
+      position: absolute;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: radar-pulse 6s infinite;
+    }
+
+    .radar-circle:nth-child(9) {
+      top: 25%;
+      left: 5%;
+      width: 200px;
+      height: 200px;
+      animation-delay: 0s;
+    }
+
+    .radar-circle:nth-child(10) {
+      top: 75%;
+      right: 5%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 3s;
+    }
+
+    @keyframes radar-pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.3;
+        border-color: rgba(0, 255, 255, 0.2);
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+        border-color: rgba(0, 255, 255, 0.4);
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+        border-color: rgba(0, 255, 255, 0.2);
+      }
+    }
+
+    /* Main Content - New Design */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 120px 20px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: none;
+    }
+
+    /* Floating Title with Blue Glow */
+    .tool-title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin-bottom: 60px;
+      color: #00ffff;
+      text-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      letter-spacing: -2px;
+      position: relative;
+    }
+
+    .water-droplet {
+      font-size: 4.5rem;
+      animation: water-bounce 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(0, 123, 255, 0.4));
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .tool-title .water-droplet:first-child { margin-right: 18px; }
+    .tool-title .water-droplet:last-child { margin-left: 18px; }
+
+    @keyframes water-bounce {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      25% {
+        transform: translateY(-10px) scale(1.1);
+      }
+      50% {
+        transform: translateY(0) scale(1);
+      }
+      75% {
+        transform: translateY(-5px) scale(1.05);
+      }
+    }
+
+    /* Step Section */
+    .step-section {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .step-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .step-subtitle {
+      font-size: 1rem;
+      color: #b0b0b0;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    /* Streamlit-style Upload Area */
+    .upload-area {
+      background: rgba(255,255,255,0.07);
+      border: 2px dashed #3399ff;
+      border-radius: 14px;
+      padding: 0;
+      min-height: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    
+    .upload-area.file-selected {
+      background: rgba(0, 123, 255, 0.1);
+      border-color: #007bff;
+    }
+    
+    .upload-area.file-uploaded {
+      background: rgba(40, 167, 69, 0.2) !important;
+      border: 3px solid #28a745 !important;
+      box-shadow: 0 0 15px rgba(40, 167, 69, 0.4) !important;
+    }
+
+    .upload-area .upload-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: 32px;
+    }
+    .upload-icon {
+      font-size: 2.2rem;
+      color: #b0c4d6;
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+    .upload-text {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    .upload-hint {
+      font-size: 0.9rem;
+      color: #b0b0b0;
+      margin-bottom: 0;
+      margin-left: 8px;
+    }
+    .browse-btn {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-right: 32px;
+      margin-left: auto;
+      align-self: center;
+    }
+    .upload-area input[type="file"] { display: none; }
+    .upload-area:hover {
+      border-color: #007bff;
+      background: rgba(255,255,255,0.13) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+    }
+
+    .upload-area.dragover {
+      border-color: #007bff;
+      background: #e3f2fd;
+    }
+
+    /* Interactive Elements */
+    .upload-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .upload-area:hover::before {
+      left: 100%;
+    }
+
+    /* Process Button */
+    .process-btn {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      font-weight: 600;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    .process-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+    }
+
+    .process-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Progress Section */
+    .progress-section {
+      background: rgba(0, 123, 255, 0.05);
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid rgba(0, 123, 255, 0.2);
+      width: 100%;
+      display: none;
+      margin-top: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .progress-bar-container {
+      background: #e9ecef;
+      border-radius: 10px;
+      height: 20px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .progress-text {
+      color: #007bff;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .timer-text {
+      color: #6c757d;
+      font-weight: 500;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, #28a745, #1e7e34);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    }
+
+    /* Success Popup Notification */
+    .success-popup {
+      position: fixed;
+      top: 20px;
+      right: -400px;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+      z-index: 1000;
+      font-weight: 600;
+      min-width: 250px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .success-popup.show {
+      right: 20px;
+    }
+
+    .success-popup.hide {
+      right: -400px;
+      opacity: 0;
+    }
+
+    .success-popup .popup-icon {
+      font-size: 1.5rem;
+      animation: bounceIn 0.6s ease;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.1); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* How it Works Section */
+    .how-it-works-section {
+      margin-top: 100px;
+      width: 100%;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+      text-align: center;
+    }
+    .how-it-works-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+      color: #00ffff;
+      letter-spacing: 1px;
+    }
+    .how-it-works-timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 38px;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .how-timeline-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      position: relative;
+    }
+    .how-timeline-number {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      min-width: 34px;
+      min-height: 34px;
+      width: 34px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7ee8fa 0%, #00c6fb 40%, #005bea 100%);
+      box-shadow: 0 0 10px rgba(0,191,255,0.18);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .how-timeline-content {
+      text-align: left;
+      color: #fff;
+      max-width: 600px;
+    }
+    .how-timeline-heading {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #00eaff;
+      letter-spacing: 0.5px;
+    }
+    .how-timeline-desc {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #e0f7fa;
+      line-height: 1.6;
+    }
+    .how-it-works-timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, #00eaff 0%, #005bea 100%);
+      opacity: 0.18;
+      z-index: 0;
+    }
+    .how-timeline-step:last-child .how-timeline-content { margin-bottom: 0; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navigation { top: 10px; gap: 10px; padding: 8px 12px; flex-wrap: wrap; }
+      nav a { font-size: 0.9rem; padding: 4px 10px; }
+      .logo { height: 48px; }
+      .main-container {
+        padding: 140px 15px 30px;
+      }
+
+      .tool-title {
+        font-size: 3rem;
+        gap: 15px;
+        letter-spacing: -1px;
+      }
+
+      .water-droplet { font-size: 2.8rem; }
+      .tool-title .water-droplet:first-child, .tool-title .water-droplet:last-child { margin: 8px; }
+
+      .step-title {
+        font-size: 1.2rem;
+      }
+
+      .upload-area { flex-direction: column; height: auto; min-height: 90px; padding: 20px 10px; }
+      .upload-area .upload-left { margin-left: 0; gap: 10px; }
+      .browse-btn { margin: 20px 0 0 0; width: 100%; }
+
+      .how-it-works-timeline { gap: 22px; }
+      .how-timeline-step { gap: 12px; }
+      .how-timeline-number { font-size: 0.9rem; min-width: 22px; min-height: 22px; width: 22px; height: 22px; line-height: 22px; }
+      .how-timeline-content { font-size: 0.95rem; }
+    }
+    @media (max-width: 480px) {
+      .navigation { top: 8px; padding: 6px 10px; gap: 8px; }
+      nav a { font-size: 0.85rem; padding: 4px 8px; }
+      .logo { height: 42px; }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Horizontal Tech Background -->
+  <div class="tech-background">
+    <div class="radar-line"></div>
+    <div class="radar-line"></div>
+    <div class="radar-line"></div>
+    <div class="radar-line"></div>
+    <div class="connection-node"></div>
+    <div class="connection-node"></div>
+    <div class="connection-node"></div>
+    <div class="connection-node"></div>
+    <div class="radar-circle"></div>
+    <div class="radar-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="navigation">
+                                <a href="/">
+                      <img src="/frontend/logo.png" alt="Logo" class="logo" id="homeLogo">
+                    </a>
+    <nav>
+      <div class="dropdown">
+        <a href="website2.html#education">About</a>
+        <div class="dropdown-content">
+          <a href="website2.html#education">Education</a>
+          <a href="website2.html#work">Work Experience</a>
+          <a href="website2.html#certifications">Certificates</a>
+          <a href="website2.html#skills">Skills</a>
+        </div>
+      </div>
+      <div class="dropdown empty">
+        <a href="/projects">Projects</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+      <div class="dropdown">
+                  <a href="/#delta-tools">City of Delta</a>
+        <div class="dropdown-content">
+                              <a href="/meter-form-processor">Meter Form Processor</a>
+        <a href="/single-occupancy-discount">Single Occupancy Discount Form Processor</a>
+        <a href="/secondary-suite-exemption">Secondary Suite Exemption Form Processor</a>
+        <a href="/water-consumption-anomaly">Water Consumption Anomaly Detector</a>
+        <a href="/sql-query-generator">SQL Query Generator</a>
+          <a href="#">Other Tools</a>
+        </div>
+      </div>
+      <div class="dropdown empty">
+        <a href="/contact">Contact</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Floating Title -->
+    <h1 class="tool-title">
+      <span class="water-droplet">📄</span>
+      SOD Form Processor
+      <span class="water-droplet">📄</span>
+    </h1>
+    
+    <!-- Step Section -->
+    <div class="step-section">
+      <h2 class="step-title">Step 1: Upload Multi-page PDF of Forms</h2>
+      <p class="step-subtitle">Upload your SOD forms PDF</p>
+      
+      <form id="uploadForm">
+        <div class="upload-area" id="uploadArea">
+          <div class="upload-left">
+            <div class="upload-icon">☁️</div>
+            <div>
+              <div class="upload-text">Drag and drop file here</div>
+              <div class="upload-hint">Limit 200MB per file • PDF</div>
+            </div>
+          </div>
+          <button type="button" class="browse-btn" onclick="document.getElementById('pdfFile').click()">Browse files</button>
+          <input type="file" id="pdfFile" accept=".pdf" required>
+        </div>
+        <button type="submit" class="process-btn" id="processBtn">Process Forms</button>
+      </form>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-section" id="progressSection">
+      <div class="progress-text" id="progressText">Processing...</div>
+      <div class="timer-text" id="timerText">Time elapsed: 0.0s</div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <!-- How it Works Section -->
+    <div class="how-it-works-section">
+      <h2 class="how-it-works-title">How it Works</h2>
+      <div class="how-it-works-timeline">
+        <div class="how-timeline-step">
+          <div class="how-timeline-number">1</div>
+          <div class="how-timeline-content">
+            <div class="how-timeline-heading">User uploads PDF</div>
+            <div class="how-timeline-desc">User uploads a multi-page PDF containing SOD forms where every two pages represent the front and back of one form.</div>
+          </div>
+        </div>
+        <div class="how-timeline-step">
+          <div class="how-timeline-number">2</div>
+          <div class="how-timeline-content">
+            <div class="how-timeline-heading">PDF split & image conversion</div>
+            <div class="how-timeline-desc">PDF pages are converted to images. Front pages are cropped to extract account numbers and address information, while back pages are processed in full.</div>
+          </div>
+        </div>
+        <div class="how-timeline-step">
+          <div class="how-timeline-number">3</div>
+          <div class="how-timeline-content">
+            <div class="how-timeline-heading">OCR text extraction</div>
+            <div class="how-timeline-desc">Each cropped image and full back page is sent to Azure OCR for text extraction, identifying names, addresses, and account numbers.</div>
+          </div>
+        </div>
+        <div class="how-timeline-step">
+          <div class="how-timeline-number">4</div>
+          <div class="how-timeline-content">
+            <div class="how-timeline-heading">Data parsing & verification</div>
+            <div class="how-timeline-desc">Names and addresses from front and back pages are compared for verification. Account numbers are extracted and all data is validated for accuracy.</div>
+          </div>
+        </div>
+        <div class="how-timeline-step">
+          <div class="how-timeline-number">5</div>
+          <div class="how-timeline-content">
+            <div class="how-timeline-heading">Excel export & download</div>
+            <div class="how-timeline-desc">All extracted data including account numbers, names, addresses, and verification status is compiled into an Excel spreadsheet for easy review and processing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Logo click to go home
+    document.getElementById('homeLogo').addEventListener('click', function() {
+      window.location.href = 'website2.html';
+    });
+
+    // Drag and drop functionality
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('pdfFile');
+
+    // Drag and drop events
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput.files = files;
+        updateUploadDisplay(files[0]);
+      }
+    });
+
+    // Click to upload - only if not clicking on the browse button
+    uploadArea.addEventListener('click', function(e) {
+      // Don't trigger if clicking on the browse button
+      if (e.target.classList.contains('browse-btn')) {
+        return;
+      }
+      fileInput.click();
+    });
+
+    // File input change
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        updateUploadDisplay(file);
+      }
+    });
+
+    function showSuccessPopup() {
+      const popup = document.createElement('div');
+      popup.className = 'success-popup';
+      popup.innerHTML = `
+        <span class="popup-icon">✅</span>
+        <span>File uploaded successfully!</span>
+      `;
+      document.body.appendChild(popup);
+      
+      setTimeout(() => popup.classList.add('show'), 100);
+      setTimeout(() => {
+        popup.classList.add('hide');
+        setTimeout(() => document.body.removeChild(popup), 400);
+      }, 3000);
+    }
+
+    function updateUploadDisplay(file) {
+      const uploadIcon = uploadArea.querySelector('.upload-icon');
+      const uploadText = uploadArea.querySelector('.upload-text');
+      const uploadHint = uploadArea.querySelector('.upload-hint');
+      
+      uploadIcon.textContent = '✅';
+      uploadText.textContent = file.name;
+      uploadHint.textContent = 'File uploaded successfully!';
+      uploadArea.classList.add('file-selected');
+      
+      // Show success popup
+      showSuccessPopup();
+      
+      // Add green border to indicate successful upload
+      setTimeout(() => {
+        uploadArea.classList.add('file-uploaded');
+      }, 500); // Small delay to show the transition
+    }
+
+    // Timer functionality
+    let startTime = 0;
+    let timerInterval = null;
+
+    function startTimer() {
+      startTime = Date.now();
+      timerInterval = setInterval(updateTimer, 100);
+    }
+
+    function updateTimer() {
+      const elapsed = (Date.now() - startTime) / 1000;
+      document.getElementById('timerText').textContent = `Time elapsed: ${elapsed.toFixed(1)}s`;
+    }
+
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        const totalTime = (Date.now() - startTime) / 1000;
+        document.getElementById('timerText').textContent = `Total processing time: ${totalTime.toFixed(1)}s`;
+      }
+    }
+
+    // Form processing
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const fileInput = document.getElementById('pdfFile');
+      const processBtn = document.getElementById('processBtn');
+      const progressSection = document.getElementById('progressSection');
+      const progressText = document.getElementById('progressText');
+      const progressBar = document.getElementById('progressBar');
+      
+      if (!fileInput.files[0]) {
+        alert('Please select a PDF file to upload.');
+        return;
+      }
+
+      processBtn.disabled = true;
+      processBtn.textContent = 'Processing...';
+      progressSection.style.display = 'block';
+      progressText.textContent = 'Initializing process...';
+      progressBar.style.width = '5%';
+      progressBar.style.backgroundColor = '#007bff';
+      
+      // Start timer
+      startTimer();
+
+      try {
+        // Step 1: Upload and get progress
+        const formData = new FormData();
+        formData.append('pdf', fileInput.files[0]);
+
+        progressText.textContent = 'Uploading file to server...';
+        progressBar.style.width = '15%';
+
+        let progressResp;
+        try {
+          progressResp = await fetch('http://localhost:8001/process_sod_forms/?progress=true', {
+            method: 'POST',
+            body: formData
+          });
+        } catch (err) {
+          progressText.textContent = 'ACCESS DENIED';
+          progressBar.style.width = '100%';
+          progressBar.style.backgroundColor = '#ff4444';
+          processBtn.disabled = false;
+          processBtn.textContent = 'Process Forms';
+          stopTimer();
+          return;
+        }
+
+        if (!progressResp.ok) {
+          progressText.textContent = 'ACCESS DENIED';
+          progressBar.style.width = '100%';
+          progressBar.style.backgroundColor = '#ff4444';
+          processBtn.disabled = false;
+          processBtn.textContent = 'Process Forms';
+          stopTimer();
+          return;
+        }
+
+        // Continue with the rest of the processing...
+        progressText.textContent = 'Converting PDF to images...';
+        progressBar.style.width = '25%';
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        progressText.textContent = 'Extracting data from forms...';
+        progressBar.style.width = '40%';
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        progressText.textContent = 'Running OCR analysis...';
+        progressBar.style.width = '55%';
+
+        const progressData = await progressResp.json();
+
+        if (!progressData.ready) {
+          progressText.textContent = 'Processing failed or no valid forms found.';
+          processBtn.disabled = false;
+          processBtn.textContent = 'Process Forms';
+          stopTimer();
+          return;
+        }
+
+        progressText.textContent = 'Generating individual PDF files...';
+        progressBar.style.width = '75%';
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        progressText.textContent = 'Preparing Excel file...';
+        progressBar.style.width = '85%';
+
+        // Step 2: Get the actual Excel file
+        const formData2 = new FormData();
+        formData2.append('pdf', fileInput.files[0]);
+
+        try {
+          const xlsxResp = await fetch('http://localhost:8001/process_sod_forms/', {
+            method: 'POST',
+            body: formData2
+          });
+
+          if (xlsxResp.ok) {
+            const blob = await xlsxResp.blob();
+            const url = window.URL.createObjectURL(blob);
+            
+            // Create download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = 'sod_extracted.xlsx';
+            downloadLink.textContent = 'Download Excel File';
+            downloadLink.className = 'download-btn';
+            
+            progressText.textContent = 'Processing completed successfully!';
+            progressBar.style.width = '100%';
+            
+            // Stop timer and show total time
+            stopTimer();
+            
+            // Add download button to progress section
+            progressSection.appendChild(downloadLink);
+          } else {
+            progressText.textContent = 'Error downloading results.';
+            stopTimer();
+          }
+        } catch (err) {
+          progressText.textContent = 'Error downloading results.';
+          stopTimer();
+        }
+      } catch (error) {
+        progressText.textContent = 'An unexpected error occurred.';
+        processBtn.disabled = false;
+        processBtn.textContent = 'Process Forms';
+        stopTimer();
+      }
+      
+      processBtn.disabled = false;
+      processBtn.textContent = 'Process Forms';
+
+    });
+
+    // Dropdown hover delay functionality
+    const dropdowns = document.querySelectorAll('.dropdown');
+    let hideTimeout;
+
+    dropdowns.forEach(dropdown => {
+      const dropdownContent = dropdown.querySelector('.dropdown-content');
+      
+      dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+        dropdownContent.style.display = 'block';
+      });
+      
+      dropdown.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 300); // 0.3 second delay
+      });
+      
+      dropdownContent.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+      });
+      
+      dropdownContent.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 300); // 0.3 second delay
+      });
+    });
+
+    // Interactive background effect
+    window.addEventListener('mousemove', function(e) {
+      const radarLines = document.querySelectorAll('.radar-line');
+      const connectionNodes = document.querySelectorAll('.connection-node');
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      radarLines.forEach((line, index) => {
+        const speed = (index + 1) * 0.2;
+        const x = (mouseX - 0.5) * speed * 10;
+        const y = (mouseY - 0.5) * speed * 10;
+        line.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      connectionNodes.forEach((node, index) => {
+        const speed = (index + 1) * 0.3;
+        const x = (mouseX - 0.5) * speed * 10;
+        const y = (mouseY - 0.5) * speed * 10;
+        node.style.transform = `translate(${x}px, ${y}px) scale(${1 + speed * 0.1})`;
+      });
+    });
+  </script>
+</body>
+</html>

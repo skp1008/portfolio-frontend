@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondary Suite Form Processor | City of Delta Tools</title>
+    <link rel="icon" type="image/png" href="/frontend/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Navigation - Keep exactly the same */
+        .navigation {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3));
+            transition: all 0.3s ease;
+            object-fit: contain;
+            object-position: center;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #0080ff);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            z-index: 1000;
+            margin-top: 10px;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            transform: translateX(5px);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content:hover {
+            display: block;
+        }
+
+        /* Empty dropdown for alignment */
+        .dropdown.empty .dropdown-content {
+            display: none !important;
+        }
+
+        /* Horizontal Tech Background */
+        .tech-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .radar-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.6), transparent);
+            height: 1px;
+            animation: radar-sweep 3s infinite linear;
+        }
+
+        .radar-line:nth-child(1) {
+            top: 20%;
+            width: 100%;
+            animation-delay: 0s;
+        }
+
+        .radar-line:nth-child(2) {
+            top: 40%;
+            width: 100%;
+            animation-delay: 1s;
+        }
+
+        .radar-line:nth-child(3) {
+            top: 60%;
+            width: 100%;
+            animation-delay: 2s;
+        }
+
+        .radar-line:nth-child(4) {
+            top: 80%;
+            width: 100%;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes radar-sweep {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .connection-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: node-pulse 3s infinite;
+        }
+
+        .connection-node:nth-child(5) {
+            top: 15%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .connection-node:nth-child(6) {
+            top: 35%;
+            right: 25%;
+            animation-delay: 1s;
+        }
+
+        .connection-node:nth-child(7) {
+            top: 55%;
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .connection-node:nth-child(8) {
+            top: 75%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes node-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            }
+        }
+
+        /* Radar circles for depth */
+        .radar-circle {
+            position: absolute;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: radar-pulse 6s infinite;
+        }
+
+        .radar-circle:nth-child(9) {
+            top: 25%;
+            left: 5%;
+            width: 200px;
+            height: 200px;
+            animation-delay: 0s;
+        }
+
+        .radar-circle:nth-child(10) {
+            top: 75%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 3s;
+        }
+
+        @keyframes radar-pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+                border-color: rgba(0, 255, 255, 0.2);
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.6;
+                border-color: rgba(0, 255, 255, 0.4);
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.3;
+                border-color: rgba(0, 255, 255, 0.2);
+            }
+        }
+
+        /* Main Content - New Design */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 120px 165px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background: none;
+        }
+
+        /* Floating Title with Blue Glow */
+        .tool-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #00ffff;
+            text-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            letter-spacing: -2px;
+            position: relative;
+        }
+
+        .house-emoji {
+            font-size: 4.5rem;
+            animation: house-bounce 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(0, 123, 255, 0.4));
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .tool-title .house-emoji:first-child { margin-right: 18px; }
+        .tool-title .house-emoji:last-child { margin-left: 18px; }
+
+        .title-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        @keyframes house-bounce {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            25% {
+                transform: translateY(-10px) scale(1.1);
+            }
+            50% {
+                transform: translateY(0) scale(1);
+            }
+            75% {
+                transform: translateY(-5px) scale(1.05);
+            }
+        }
+
+        /* Step Section */
+        .step-section {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .step-subtitle {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Streamlit-style Upload Area */
+        .upload-area {
+            background: rgba(255,255,255,0.07);
+            border: 2px dashed #3399ff;
+            border-radius: 14px;
+            padding: 0;
+            min-height: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        .upload-area.file-selected {
+            background: rgba(0, 123, 255, 0.1);
+            border-color: #007bff;
+        }
+        
+        .upload-area.file-uploaded {
+            background: rgba(40, 167, 69, 0.2) !important;
+            border: 3px solid #28a745 !important;
+            box-shadow: 0 0 15px rgba(40, 167, 69, 0.4) !important;
+        }
+
+        .upload-area .upload-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-left: 32px;
+        }
+        .upload-icon {
+            font-size: 2.2rem;
+            color: #b0c4d6;
+            margin-bottom: 0;
+            margin-right: 0;
+        }
+        .upload-text {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-bottom: 0;
+            margin-left: 8px;
+        }
+        .browse-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 32px;
+            margin-left: auto;
+            align-self: center;
+        }
+        .upload-area input[type="file"] { display: none; }
+        .upload-area:hover {
+            border-color: #007bff;
+            background: rgba(255,255,255,0.13) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+        }
+
+        .upload-area.dragover {
+            border-color: #007bff;
+            background: #e3f2fd;
+        }
+
+        /* Interactive Elements */
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .upload-area:hover::before {
+            left: 100%;
+        }
+
+        /* Process Button */
+        .process-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            font-weight: 600;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .process-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+        }
+
+        .process-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: rgba(0, 123, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            width: 100%;
+            display: none;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            color: #007bff;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .timer-text {
+            color: #6c757d;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Success Popup Notification */
+        .success-popup {
+            position: fixed;
+            top: 20px;
+            right: -400px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            z-index: 1000;
+            font-weight: 600;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .success-popup.show {
+            right: 20px;
+        }
+
+        .success-popup.hide {
+            right: -400px;
+            opacity: 0;
+        }
+
+        .success-popup .popup-icon {
+            font-size: 1.5rem;
+            animation: bounceIn 0.6s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Results Section */
+        .results-container {
+            background: rgba(0, 123, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            width: 100%;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .results-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 12px;
+            text-align: left;
+            color: #fff;
+        }
+
+        th {
+            background: rgba(0, 255, 255, 0.2);
+            font-weight: 700;
+            color: #00ffff;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Status Messages */
+        .success {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .error {
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        .info {
+            background: rgba(23, 162, 184, 0.2);
+            color: #17a2b8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid rgba(23, 162, 184, 0.3);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* How it Works Section */
+        .how-it-works-section {
+            margin-top: 100px;
+            width: 100%;
+            padding: 0;
+            background: none;
+            border-radius: 0;
+            text-align: center;
+        }
+        .how-it-works-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #00ffff;
+            letter-spacing: 1px;
+        }
+        .how-it-works-timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 38px;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .how-timeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 22px;
+            position: relative;
+        }
+        .how-timeline-number {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            min-width: 34px;
+            min-height: 34px;
+            width: 34px;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7ee8fa 0%, #00c6fb 40%, #005bea 100%);
+            box-shadow: 0 0 10px rgba(0,191,255,0.18);
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .how-timeline-content {
+            text-align: left;
+            color: #fff;
+            max-width: 600px;
+        }
+        .how-timeline-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #00eaff;
+            letter-spacing: 0.5px;
+        }
+        .how-timeline-desc {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #e0f7fa;
+            line-height: 1.6;
+        }
+        .how-it-works-timeline::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00eaff 0%, #005bea 100%);
+            opacity: 0.18;
+            z-index: 0;
+        }
+        .how-timeline-step:last-child .how-timeline-content { margin-bottom: 0; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navigation { top: 10px; gap: 10px; padding: 8px 12px; flex-wrap: wrap; }
+            nav a { font-size: 0.9rem; padding: 4px 10px; }
+            .logo { height: 48px; }
+            .main-container {
+                padding: 140px 15px 30px;
+            }
+
+            .tool-title {
+                font-size: 3rem;
+                gap: 15px;
+                letter-spacing: -1px;
+            }
+
+            .house-emoji { font-size: 2.8rem; }
+            .tool-title .house-emoji:first-child, .tool-title .house-emoji:last-child { margin: 8px; }
+
+            .step-title {
+                font-size: 1.2rem;
+            }
+
+            .upload-area { flex-direction: column; height: auto; min-height: 90px; padding: 20px 10px; }
+            .upload-area .upload-left { margin-left: 0; gap: 10px; }
+            .browse-btn { margin: 20px 0 0 0; width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .navigation { top: 8px; padding: 6px 10px; gap: 8px; }
+            nav a { font-size: 0.85rem; padding: 4px 8px; }
+            .logo { height: 42px; }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style>
+        /* Global navbar mobile overrides */
+        @media (max-width: 768px) {
+            .navigation { padding: 10px 14px; flex-wrap: wrap; max-width: calc(100% - 16px); justify-content: center; }
+            nav a { font-size: 0.82rem; padding: 4px 8px; white-space: nowrap; }
+            .logo { height: 36px; }
+            .main-container { padding-top: 150px; }
+        }
+        @media (max-width: 480px) {
+            .navigation { padding: 6px 10px; gap: 6px; max-width: calc(100% - 12px); }
+            nav a { font-size: 0.7rem; padding: 2px 6px; }
+            .logo { height: 26px; }
+            .main-container { padding-top: 165px; }
+        }
+        @media (max-width: 400px) {
+            .navigation { padding: 6px 8px; gap: 4px; }
+            nav a { font-size: 0.64rem; padding: 2px 4px; }
+            .logo { height: 24px; }
+            .main-container { padding-top: 175px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Horizontal Tech Background -->
+    <div class="tech-background">
+        <div class="radar-line"></div>
+        <div class="radar-line"></div>
+        <div class="radar-line"></div>
+        <div class="radar-line"></div>
+        <div class="connection-node"></div>
+        <div class="connection-node"></div>
+        <div class="connection-node"></div>
+        <div class="connection-node"></div>
+        <div class="radar-circle"></div>
+        <div class="radar-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+                            <a href="/">
+                      <img src="/frontend/logo.png" alt="Logo" class="logo" id="homeLogo">
+                    </a>
+        <nav>
+                  <div class="dropdown">
+        <a href="website2.html#education">About</a>
+        <div class="dropdown-content">
+          <a href="website2.html#education">Education</a>
+          <a href="website2.html#work">Work Experience</a>
+          <a href="website2.html#certifications">Certificates</a>
+          <a href="website2.html#skills">Skills</a>
+        </div>
+      </div>
+            <div class="dropdown empty">
+                <a href="/projects">Projects</a>
+                <div class="dropdown-content">
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/#delta-tools">City of Delta</a>
+                <div class="dropdown-content">
+                                        <a href="/meter-form-processor">Meter Form Processor</a>
+        <a href="/single-occupancy-discount">Single Occupancy Discount Form Processor</a>
+        <a href="/secondary-suite-exemption">Secondary Suite Exemption Form Processor</a>
+        <a href="/water-consumption-anomaly">Water Consumption Anomaly Detector</a>
+        <a href="/sql-query-generator">SQL Query Generator</a>
+                    <a href="#">Other Tools</a>
+                </div>
+            </div>
+            <div class="dropdown empty">
+                <a href="/contact">Contact</a>
+                <div class="dropdown-content">
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Floating Title -->
+        <h1 class="tool-title">
+            <span class="house-emoji">🏠</span>
+            <div class="title-text">
+                <div>Secondary Suite</div>
+                <div>Form Processor</div>
+            </div>
+            <span class="house-emoji">🏠</span>
+        </h1>
+        
+        <!-- Step 1: Database upload -->
+        <div class="step-section">
+            <h2 class="step-title">Step 1: Upload City Account Database (CSV or Excel)</h2>
+            <p class="step-subtitle">Upload your account database</p>
+            
+            <div class="upload-area" id="db_upload_area" onclick="document.getElementById('db_file').click()">
+                <div class="upload-left">
+                    <div class="upload-icon">☁️</div>
+                    <div>
+                        <div class="upload-text">Drag and drop database file here</div>
+                        <div class="upload-hint">Limit 200MB per file • CSV, XLSX</div>
+                    </div>
+                </div>
+                <button type="button" class="browse-btn" onclick="event.stopPropagation(); document.getElementById('db_file').click()">Browse files</button>
+                <input type="file" id="db_file" accept=".csv,.xlsx" />
+            </div>
+            <div id="db_status"></div>
+        </div>
+        
+        <!-- Step 2: PDF upload and Processing -->
+        <div class="step-section">
+            <h2 class="step-title">Step 2: Upload Multi‑page PDF of Forms</h2>
+            <p class="step-subtitle">Upload your forms PDF</p>
+            
+            <div class="upload-area" id="pdf_upload_area" onclick="document.getElementById('pdf_file').click()">
+                <div class="upload-left">
+                    <div class="upload-icon">☁️</div>
+                    <div>
+                        <div class="upload-text">Drag and drop PDF file here</div>
+                        <div class="upload-hint">Limit 200MB per file • PDF</div>
+                    </div>
+                </div>
+                <button type="button" class="browse-btn" onclick="event.stopPropagation(); document.getElementById('pdf_file').click()">Browse files</button>
+                <input type="file" id="pdf_file" accept=".pdf" />
+            </div>
+            <div id="pdf_status"></div>
+            
+            <button id="process_btn" class="process-btn" disabled onclick="processForms()">🚀 Process Forms</button>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-section" id="progress_section">
+            <div class="progress-text" id="progress_text">Processing...</div>
+            <div class="timer-text" id="timer_text">Time elapsed: 0.0s</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress_bar"></div>
+            </div>
+            <div id="processing_status"></div>
+        </div>
+        
+        <!-- Results -->
+        <div id="results_container" class="results-container hidden">
+            <div id="results_summary"></div>
+            <div id="runtime_display"></div>
+            
+            <div class="results-title">Matched Records</div>
+            <div id="results_table"></div>
+            
+            <div id="download_buttons"></div>
+            
+            <h3 style="color: #00ffff; margin-top: 40px; margin-bottom: 20px;">Start a New Process</h3>
+            <button id="process_another_btn" class="process-btn" onclick="processAnotherForm()">Process Another Form</button>
+        </div>
+
+        <!-- How it Works Section -->
+        <div class="how-it-works-section">
+            <h2 class="how-it-works-title">How it Works</h2>
+            <div class="how-it-works-timeline">
+                <div class="how-timeline-step">
+                    <div class="how-timeline-number">1</div>
+                    <div class="how-timeline-content">
+                        <div class="how-timeline-heading">Database upload & validation</div>
+                        <div class="how-timeline-desc">User uploads a CSV or Excel file containing the City of Delta account database. The system validates the file format and extracts account numbers, addresses, and property information for matching.</div>
+                    </div>
+                </div>
+                <div class="how-timeline-step">
+                    <div class="how-timeline-number">2</div>
+                    <div class="how-timeline-content">
+                        <div class="how-timeline-heading">PDF forms upload & processing</div>
+                        <div class="how-timeline-desc">User uploads a multi-page PDF containing secondary suite exemption forms. The system splits the PDF into individual pages and converts each page to an image for text extraction.</div>
+                    </div>
+                </div>
+                <div class="how-timeline-step">
+                    <div class="how-timeline-number">3</div>
+                    <div class="how-timeline-content">
+                        <div class="how-timeline-heading">OCR text extraction & data parsing</div>
+                        <div class="how-timeline-desc">Each form page is processed through OCR to extract text data including account numbers, property addresses, owner names, and exemption details. The system parses and validates the extracted information.</div>
+                    </div>
+                </div>
+                <div class="how-timeline-step">
+                    <div class="how-timeline-number">4</div>
+                    <div class="how-timeline-content">
+                        <div class="how-timeline-heading">Database matching & verification</div>
+                        <div class="how-timeline-desc">Extracted account numbers and addresses from forms are matched against the uploaded database. The system verifies property ownership and validates that the exemption applications correspond to existing city accounts.</div>
+                    </div>
+                </div>
+                <div class="how-timeline-step">
+                    <div class="how-timeline-number">5</div>
+                    <div class="how-timeline-content">
+                        <div class="how-timeline-heading">Results compilation & export</div>
+                        <div class="how-timeline-desc">All matched records are compiled into a comprehensive Excel spreadsheet containing account numbers, property addresses, owner information, exemption details, and verification status. Users can download both the Excel report and the matched PDF forms as a ZIP file.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logo click to go home
+        document.getElementById('homeLogo').addEventListener('click', function() {
+            window.location.href = 'website2.html';
+        });
+
+        let db_file_uploaded = null;
+        let pdf_file_uploaded = null;
+        let show_results = false;
+        let results_df = null;
+        let run_id = null;
+
+        // Setup drag and drop for database upload
+        const dbUploadArea = document.getElementById('db_upload_area');
+        const dbFileInput = document.getElementById('db_file');
+
+        // Database file drag and drop events
+        dbUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            dbUploadArea.classList.add('dragover');
+        });
+
+        dbUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            dbUploadArea.classList.remove('dragover');
+        });
+
+        dbUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            dbUploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                dbFileInput.files = files;
+                updateDbUploadDisplay(files[0]);
+            }
+        });
+
+        dbFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                updateDbUploadDisplay(file);
+            }
+        });
+
+        function updateDbUploadDisplay(file) {
+            const uploadIcon = dbUploadArea.querySelector('.upload-icon');
+            const uploadText = dbUploadArea.querySelector('.upload-text');
+            const uploadHint = dbUploadArea.querySelector('.upload-hint');
+            
+            uploadIcon.textContent = '✅';
+            uploadText.textContent = file.name;
+            uploadHint.textContent = 'Database file uploaded successfully!';
+            dbUploadArea.classList.add('file-selected');
+            
+            db_file_uploaded = file;
+            showSuccessPopup('Database file uploaded successfully!');
+            
+            // Add green border to indicate successful upload
+            setTimeout(() => {
+                dbUploadArea.classList.add('file-uploaded');
+            }, 500);
+            
+            checkProcessButton();
+        }
+
+        // Setup drag and drop for PDF upload
+        const pdfUploadArea = document.getElementById('pdf_upload_area');
+        const pdfFileInput = document.getElementById('pdf_file');
+
+        // PDF file drag and drop events
+        pdfUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            pdfUploadArea.classList.add('dragover');
+        });
+
+        pdfUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            pdfUploadArea.classList.remove('dragover');
+        });
+
+        pdfUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            pdfUploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                pdfFileInput.files = files;
+                updatePdfUploadDisplay(files[0]);
+            }
+        });
+
+        pdfFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                updatePdfUploadDisplay(file);
+            }
+        });
+
+        function updatePdfUploadDisplay(file) {
+            const uploadIcon = pdfUploadArea.querySelector('.upload-icon');
+            const uploadText = pdfUploadArea.querySelector('.upload-text');
+            const uploadHint = pdfUploadArea.querySelector('.upload-hint');
+            
+            uploadIcon.textContent = '✅';
+            uploadText.textContent = file.name;
+            uploadHint.textContent = 'PDF file uploaded successfully!';
+            pdfUploadArea.classList.add('file-selected');
+            
+            pdf_file_uploaded = file;
+            showSuccessPopup('PDF file uploaded successfully!');
+            
+            // Add green border to indicate successful upload
+            setTimeout(() => {
+                pdfUploadArea.classList.add('file-uploaded');
+            }, 500);
+            
+            checkProcessButton();
+        }
+
+        function showSuccessPopup(message) {
+            const popup = document.createElement('div');
+            popup.className = 'success-popup';
+            popup.innerHTML = `
+                <span class="popup-icon">✅</span>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(popup);
+            
+            setTimeout(() => popup.classList.add('show'), 100);
+            setTimeout(() => {
+                popup.classList.add('hide');
+                setTimeout(() => document.body.removeChild(popup), 400);
+            }, 3000);
+        }
+
+        function checkProcessButton() {
+            const processBtn = document.getElementById('process_btn');
+            if (db_file_uploaded && pdf_file_uploaded) {
+                processBtn.disabled = false;
+            } else {
+                processBtn.disabled = true;
+            }
+        }
+
+        // Timer functionality
+        let startTime = 0;
+        let timerInterval = null;
+
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 100);
+        }
+
+        function updateTimer() {
+            const elapsed = (Date.now() - startTime) / 1000;
+            document.getElementById('timer_text').textContent = `Time elapsed: ${elapsed.toFixed(1)}s`;
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                const totalTime = (Date.now() - startTime) / 1000;
+                document.getElementById('timer_text').textContent = `Total processing time: ${totalTime.toFixed(1)}s`;
+            }
+        }
+
+        async function processForms() {
+            const processBtn = document.getElementById('process_btn');
+            const progressSection = document.getElementById('progress_section');
+            const progressText = document.getElementById('progress_text');
+            const progressBar = document.getElementById('progress_bar');
+            const resultsContainer = document.getElementById('results_container');
+            
+            processBtn.disabled = true;
+            processBtn.textContent = 'Processing...';
+            progressSection.style.display = 'block';
+            resultsContainer.classList.add('hidden');
+            
+            progressText.textContent = 'Initializing process...';
+            progressBar.style.width = '5%';
+            progressBar.style.backgroundColor = '#007bff';
+            
+            // Start timer
+            startTimer();
+
+            try {
+                progressText.textContent = 'Uploading files to server...';
+                progressBar.style.width = '15%';
+
+                const formData = new FormData();
+                formData.append('db_file', db_file_uploaded);
+                formData.append('pdf_file', pdf_file_uploaded);
+
+                try {
+                    const response = await fetch('http://localhost:8003/process_secondary_suite_forms', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        progressText.textContent = 'ACCESS DENIED';
+                        progressBar.style.width = '100%';
+                        progressBar.style.backgroundColor = '#ff4444';
+                        processBtn.disabled = false;
+                        processBtn.textContent = '🚀 Process Forms';
+                        stopTimer();
+                        return;
+                    }
+                    
+                    progressText.textContent = 'Processing database...';
+                    progressBar.style.width = '30%';
+                    
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    progressText.textContent = 'Converting PDF to images...';
+                    progressBar.style.width = '50%';
+                    
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    progressText.textContent = 'Running OCR analysis...';
+                    progressBar.style.width = '75%';
+                    
+                    const result = await response.json();
+                    
+                    progressText.textContent = 'Finalizing results...';
+                    progressBar.style.width = '90%';
+                    
+                    if (result.status === 'success') {
+                        results_df = result.results;
+                        run_id = result.run_id;
+                        
+                        progressText.textContent = 'Processing completed successfully!';
+                        progressBar.style.width = '100%';
+                        
+                        // Stop timer
+                        stopTimer();
+                        
+                        const summaryDiv = document.getElementById('results_summary');
+                        summaryDiv.innerHTML = `<div class="success">Successfully processed ${result.processed_forms} forms!</div>`;
+                        
+                        const runtimeDiv = document.getElementById('runtime_display');
+                        runtimeDiv.innerHTML = `<strong style="color: #00ffff;">Runtime:</strong> ${result.runtime_seconds} seconds`;
+                        
+                        displayResults(result.results);
+                        createDownloadButtons();
+                        
+                        show_results = true;
+                        resultsContainer.classList.remove('hidden');
+                    } else {
+                        progressText.textContent = 'Error: ' + (result.error || 'Processing failed');
+                        stopTimer();
+                    }
+                } catch (err) {
+                    progressText.textContent = 'ACCESS DENIED';
+                    progressBar.style.width = '100%';
+                    progressBar.style.backgroundColor = '#ff4444';
+                    stopTimer();
+                }
+            } catch (error) {
+                progressText.textContent = 'An unexpected error occurred.';
+                stopTimer();
+            }
+            
+            processBtn.disabled = false;
+            processBtn.textContent = '🚀 Process Forms';
+        }
+
+        function displayResults(results) {
+            const tableDiv = document.getElementById('results_table');
+            
+            if (!results || results.length === 0) {
+                tableDiv.innerHTML = '<div class="warning">No forms matched with the provided database.</div>';
+                return;
+            }
+            
+            let tableHTML = '<table><thead><tr>';
+            const headers = Object.keys(results[0]);
+            headers.forEach(header => {
+                tableHTML += `<th>${header}</th>`;
+            });
+            tableHTML += '</tr></thead><tbody>';
+            
+            results.forEach(row => {
+                tableHTML += '<tr>';
+                headers.forEach(header => {
+                    tableHTML += `<td>${row[header] || ''}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+            
+            tableHTML += '</tbody></table>';
+            tableDiv.innerHTML = tableHTML;
+        }
+
+        function createDownloadButtons() {
+            const downloadDiv = document.getElementById('download_buttons');
+            downloadDiv.innerHTML = `
+                <a href="http://127.0.0.1:8003/download/excel" class="download-btn">Download Matched Forms as Excel</a>
+                <a href="http://127.0.0.1:8003/download/zip" class="download-btn">Download Matched PDFs as ZIP</a>
+            `;
+        }
+
+        function processAnotherForm() {
+            // Reset all state
+            db_file_uploaded = null;
+            pdf_file_uploaded = null;
+            show_results = false;
+            results_df = null;
+            run_id = null;
+            
+            // Reset file upload areas
+            const dbUploadArea = document.getElementById('db_upload_area');
+            const pdfUploadArea = document.getElementById('pdf_upload_area');
+            
+            // Reset database upload area
+            const dbUploadIcon = dbUploadArea.querySelector('.upload-icon');
+            const dbUploadText = dbUploadArea.querySelector('.upload-text');
+            const dbUploadHint = dbUploadArea.querySelector('.upload-hint');
+            dbUploadIcon.textContent = '☁️';
+            dbUploadText.textContent = 'Drag and drop database file here';
+            dbUploadHint.textContent = 'Limit 200MB per file • CSV, XLSX';
+            dbUploadArea.classList.remove('file-selected', 'file-uploaded');
+            
+            // Reset PDF upload area
+            const pdfUploadIcon = pdfUploadArea.querySelector('.upload-icon');
+            const pdfUploadText = pdfUploadArea.querySelector('.upload-text');
+            const pdfUploadHint = pdfUploadArea.querySelector('.upload-hint');
+            pdfUploadIcon.textContent = '☁️';
+            pdfUploadText.textContent = 'Drag and drop PDF file here';
+            pdfUploadHint.textContent = 'Limit 200MB per file • PDF';
+            pdfUploadArea.classList.remove('file-selected', 'file-uploaded');
+            
+            // Reset UI
+            document.getElementById('db_file').value = '';
+            document.getElementById('pdf_file').value = '';
+            document.getElementById('db_status').innerHTML = '';
+            document.getElementById('pdf_status').innerHTML = '';
+            document.getElementById('progress_section').style.display = 'none';
+            document.getElementById('results_container').classList.add('hidden');
+            document.getElementById('process_btn').disabled = true;
+            document.getElementById('process_btn').textContent = '🚀 Process Forms';
+            
+            // Clean up on server
+            if (run_id) {
+                fetch('http://localhost:8003/cleanup', { method: 'POST' });
+            }
+        }
+
+        // Dropdown hover delay functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        let hideTimeout;
+
+        dropdowns.forEach(dropdown => {
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+            
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                dropdownContent.style.display = 'block';
+            });
+            
+                  dropdown.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 300); // 0.3 second delay
+      });
+      
+      dropdownContent.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+      });
+      
+      dropdownContent.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 300); // 0.3 second delay
+      });
+        });
+
+        // Interactive background effect
+        window.addEventListener('mousemove', function(e) {
+            const radarLines = document.querySelectorAll('.radar-line');
+            const connectionNodes = document.querySelectorAll('.connection-node');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            radarLines.forEach((line, index) => {
+                const speed = (index + 1) * 0.2;
+                const x = (mouseX - 0.5) * speed * 10;
+                const y = (mouseY - 0.5) * speed * 10;
+                line.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            
+            connectionNodes.forEach((node, index) => {
+                const speed = (index + 1) * 0.3;
+                const x = (mouseX - 0.5) * speed * 10;
+                const y = (mouseY - 0.5) * speed * 10;
+                node.style.transform = `translate(${x}px, ${y}px) scale(${1 + speed * 0.1})`;
+            });
+        });
+    </script>
+</body>
+</html>

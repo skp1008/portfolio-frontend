@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Krishna Paudel</title>
+  <link rel="icon" type="image/png" href="./logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    html { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%); }
+    body { background: inherit; color: #fff; overflow-x: hidden; position: relative; min-height: 100vh; }
+
+    /* Navigation (copied from website2.html) */
+    .navigation { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 30px; z-index: 100; background: rgba(10, 10, 10, 0.1); backdrop-filter: blur(15px); padding: 12px 25px; border-radius: 50px; border: 1px solid rgba(0, 255, 255, 0.1); }
+    .logo { height: 60px; width: auto; filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3)); transition: all 0.3s ease; object-fit: contain; object-position: center; cursor: pointer; }
+    .logo:hover { filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5)); transform: scale(1.05); }
+    nav { display: flex; gap: 25px; }
+    nav a { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 1rem; position: relative; transition: all 0.3s ease; padding: 6px 14px; border-radius: 20px; }
+    nav a::after { content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 2px; background: linear-gradient(90deg, #00ffff, #0080ff); transition: all 0.3s ease; transform: translateX(-50%); }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); background: rgba(0, 255, 255, 0.1); }
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); min-width: 200px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); border-radius: 15px; border: 1px solid rgba(0, 255, 255, 0.2); z-index: 1000; margin-top: 10px; padding: 10px 0; }
+    .dropdown-content a { color: #ffffff; padding: 12px 20px; text-decoration: none; display: block; font-size: 0.9rem; transition: all 0.3s ease; border-radius: 0; }
+    .dropdown-content a:hover { background: rgba(0, 255, 255, 0.1); color: #00ffff; transform: translateX(5px); }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown-content:hover { display: block; }
+    .dropdown.empty .dropdown-content { display: none !important; }
+
+    /* Horizontal Tech Background (copied) */
+    .tech-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+    .radar-line { position: absolute; background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.6), transparent); height: 1px; animation: radar-sweep 3s infinite linear; }
+    .radar-line:nth-child(1) { top: 20%; width: 100%; animation-delay: 0s; }
+    .radar-line:nth-child(2) { top: 40%; width: 100%; animation-delay: 1s; }
+    .radar-line:nth-child(3) { top: 60%; width: 100%; animation-delay: 2s; }
+    .radar-line:nth-child(4) { top: 80%; width: 100%; animation-delay: 0.5s; }
+    @keyframes radar-sweep { 0% { transform: translateX(-100%); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateX(100%); opacity: 0; } }
+    .connection-node { position: absolute; width: 4px; height: 4px; background: rgba(0, 255, 255, 0.8); border-radius: 50%; animation: node-pulse 3s infinite; }
+    .connection-node:nth-child(5){ top:15%; left:20%; animation-delay:0s; }
+    .connection-node:nth-child(6){ top:35%; right:25%; animation-delay:1s; }
+    .connection-node:nth-child(7){ top:55%; left:30%; animation-delay:2s; }
+    .connection-node:nth-child(8){ top:75%; right:15%; animation-delay:0.5s; }
+    @keyframes node-pulse { 0%,100%{ transform: scale(1); opacity:.8; box-shadow:0 0 10px rgba(0,255,255,.5);} 50%{ transform: scale(1.5); opacity:1; box-shadow:0 0 20px rgba(0,255,255,.8);} }
+    .radar-circle { position: absolute; border: 1px solid rgba(0,255,255,0.2); border-radius: 50%; animation: radar-pulse 6s infinite; }
+    .radar-circle:nth-child(9){ top:25%; left:5%; width:200px; height:200px; animation-delay:0s; }
+    .radar-circle:nth-child(10){ top:75%; right:5%; width:150px; height:150px; animation-delay:3s; }
+    @keyframes radar-pulse { 0%{ transform:scale(.8); opacity:.3; border-color:rgba(0,255,255,.2);} 50%{ transform:scale(1.1); opacity:.6; border-color:rgba(0,255,255,.4);} 100%{ transform:scale(.8); opacity:.3; border-color:rgba(0,255,255,.2);} }
+
+    /* Main layout (like meter page) */
+    .main-container { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; padding: 120px 20px 40px; max-width: 900px; margin: 0 auto; text-align: center; background: none; }
+    .tool-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 30px;
+      color: #00ffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      letter-spacing: -1px;
+    }
+
+    .envelope-emoji {
+      font-size: 3rem;
+      animation: envelope-bounce 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(0, 123, 255, 0.4));
+    }
+
+    @keyframes envelope-bounce {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      25% {
+        transform: translateY(-10px) scale(1.1);
+      }
+      50% {
+        transform: translateY(0) scale(1);
+      }
+      75% {
+        transform: translateY(-5px) scale(1.05);
+      }
+    }
+
+    .cards { width: 100%; display: flex; flex-direction: column; gap: 30px; }
+    .card { background: rgba(10,10,10,0.6); border: 1px solid rgba(0,255,255,0.12); border-radius: 16px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); text-align: left; }
+    .card:first-child { min-height: 400px; }
+    .card:last-child { min-height: 120px; }
+    .card h2 { margin: 0 0 20px; font-size: 1.3rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    @media (max-width: 600px){ .row{ grid-template-columns:1fr; } }
+
+    /* Mobile tweaks for nav and spacing */
+    @media (max-width: 768px){
+      .navigation { top: 10px; gap: 8px; padding: 10px 14px; flex-wrap: wrap; max-width: calc(100% - 16px); justify-content: center; }
+      nav a { font-size: 0.82rem; padding: 4px 8px; white-space: nowrap; }
+      .logo { height: 36px; }
+      .main-container { padding-top: 150px; }
+      .tool-title { font-size: 2.4rem; gap: 10px; }
+    }
+    @media (max-width: 480px){
+      .navigation { top: 8px; gap: 6px; padding: 6px 10px; max-width: calc(100% - 12px); }
+      nav a { font-size: 0.7rem; padding: 2px 6px; }
+      .logo { height: 26px; }
+      .main-container { padding-top: 165px; }
+    }
+    @media (max-width: 360px){
+      .navigation { top: 6px; gap: 4px; padding: 6px 8px; }
+      nav a { font-size: 0.64rem; padding: 2px 4px; }
+      .logo { height: 24px; }
+      .main-container { padding-top: 175px; }
+    }
+    label { display:block; font-size:.9rem; color:#a8b3cf; margin-bottom:8px; }
+    input, textarea { width:100%; background: rgba(255,255,255,0.04); color:#fff; border:1px solid rgba(0,255,255,0.12); padding:12px 14px; border-radius:10px; outline:none; transition:border .2s, box-shadow .2s; }
+    textarea { min-height: 160px; resize: vertical; }
+    input:focus, textarea:focus { border-color:#00ffff; box-shadow:0 0 0 3px rgba(0,255,255,.08); }
+    .actions { display:flex; align-items:center; gap:12px; margin-top:20px; }
+    .primary { background: linear-gradient(90deg, #00ffff, #0080ff); color:#001018; font-weight:700; border:none; padding:12px 18px; border-radius:12px; cursor:pointer; }
+    .primary:hover { box-shadow:0 8px 20px rgba(0,255,255,.2); transform: translateY(-1px); }
+    .email-box { display:flex; align-items:center; gap:10px; padding:12px; background: rgba(255,255,255,0.04); border:1px dashed rgba(0,255,255,0.12); border-radius:12px; }
+    .copy { background:transparent; color:#00ffff; border:1px solid rgba(0,255,255,0.12); padding:8px 12px; border-radius:10px; cursor:pointer; }
+    .note { color:#a8b3cf; font-size:.9rem; margin-top:12px; }
+    .success { color:#00ffaa; }
+    .error { color:#ff6b6b; }
+
+    /* Darker cards/fields on small screens to avoid white look */
+    @media (max-width: 768px){
+      .card { background: rgba(10,10,10,0.72); border-color: rgba(0,255,255,0.18); }
+      input, textarea { background: rgba(0,0,0,0.35); }
+      .email-box { background: rgba(0,0,0,0.35); border-color: rgba(0,255,255,0.18); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tech Background -->
+  <div class="tech-background">
+    <div class="radar-line"></div>
+    <div class="radar-line"></div>
+    <div class="radar-line"></div>
+    <div class="radar-line"></div>
+    <div class="connection-node"></div>
+    <div class="connection-node"></div>
+    <div class="connection-node"></div>
+    <div class="connection-node"></div>
+    <div class="radar-circle"></div>
+    <div class="radar-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="navigation">
+    <img src="./logo.png" alt="Logo" class="logo" id="homeLogo">
+    <nav>
+      <div class="dropdown">
+        <a href="./index.html#education">About</a>
+        <div class="dropdown-content">
+          <a href="./index.html#education">Education</a>
+          <a href="./index.html#work">Work Experience</a>
+          <a href="./index.html#certifications">Certificates</a>
+          <a href="./index.html#skills">Skills</a>
+        </div>
+      </div>
+      <div class="dropdown empty">
+        <a href="./projects.html">Projects</a>
+        <div class="dropdown-content"></div>
+      </div>
+      <div class="dropdown">
+        <a href="./index.html#delta-tools">City of Delta</a>
+        <div class="dropdown-content">
+          <a href="./meter-form-processor.html">Meter Form Processor</a>
+          <a href="./single-occupancy-discount.html">Single Occupancy Discount Form Processor</a>
+          <a href="./secondary-suite-exemption.html">Secondary Suite Exemption Form Processor</a>
+          <a href="./water-consumption-anomaly.html">Water Consumption Anomaly Detector</a>
+          <a href="./sql-query-generator.html">SQL Query Generator</a>
+          <a href="#">Other Tools</a>
+        </div>
+      </div>
+      <div class="dropdown empty">
+        <a href="./contact.html">Contact</a>
+        <div class="dropdown-content"></div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main -->
+  <div class="main-container">
+    <!-- Floating Title -->
+    <h1 class="tool-title">
+      <span class="envelope-emoji">📧</span>
+      Contact Me
+      <span class="envelope-emoji">📧</span>
+    </h1>
+    <div class="cards">
+      <div class="card">
+        <h2>Send a message</h2>
+        <form id="contactForm">
+          <div class="row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your full name" required />
+            </div>
+            <div>
+              <label for="company">Company (optional)</label>
+              <input id="company" name="company" placeholder="Your company" />
+            </div>
+          </div>
+          <div class="row">
+            <div style="grid-column: 1 / -1;">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" placeholder="What is this about?" required />
+            </div>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+          </div>
+          <div class="actions">
+            <button type="submit" class="primary">Send</button>
+            <span id="status" class="note"></span>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Email</h2>
+        <div class="email-box">
+          <code id="emailText">jaskp1008@gmail.com</code>
+          <button class="copy" id="copyBtn">Copy</button>
+        </div>
+        <p class="note">I typically reply within 4–8 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <script>
+    // Initialize EmailJS
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    })();
+
+    // Logo click to go home
+    document.getElementById('homeLogo').addEventListener('click', function(){ window.location.href = './index.html'; });
+
+    // Dropdown hover delay functionality
+    const dropdowns = document.querySelectorAll('.dropdown');
+    let hideTimeout;
+
+    dropdowns.forEach(dropdown => {
+      const dropdownContent = dropdown.querySelector('.dropdown-content');
+      
+      dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+        dropdownContent.style.display = 'block';
+      });
+      
+      dropdown.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 300); // 0.3 second delay
+      });
+      
+      dropdownContent.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+      });
+      
+      dropdownContent.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 300); // 0.3 second delay
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('status');
+    const copyBtn = document.getElementById('copyBtn');
+    const emailText = document.getElementById('emailText');
+
+    copyBtn.addEventListener('click', async () => {
+      try { 
+        await navigator.clipboard.writeText(emailText.textContent); 
+        copyBtn.textContent = 'Copied!'; 
+        setTimeout(()=>copyBtn.textContent='Copy', 1500);
+      } catch(e){ 
+        console.error(e);
+      } 
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending...'; 
+      statusEl.className = 'note';
+      
+      const templateParams = {
+        from_name: form.name.value.trim(),
+        from_company: form.company.value.trim(),
+        subject: form.subject.value.trim(),
+        message: form.message.value.trim(),
+        to_email: 'jaskp1008@gmail.com'
+      };
+      
+      try {
+        // Send email using EmailJS
+        const response = await emailjs.send(
+          'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+          'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+          templateParams
+        );
+        
+        if (response.status === 200) {
+          statusEl.textContent = 'Message sent successfully!'; 
+          statusEl.className = 'note success'; 
+          form.reset();
+        } else {
+          throw new Error('Email service error');
+        }
+      } catch (err) {
+        console.error('EmailJS Error:', err);
+        statusEl.textContent = 'Failed to send. Please try emailing directly or try again later.'; 
+        statusEl.className = 'note error';
+      }
+    });
+  </script>
+</body>
+</html>
+

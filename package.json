@@ -1,0 +1,29 @@
+{
+  "name": "krishna-paudel-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Krishna Paudel - Finance Intern and Data Science student at UBC",
+  "main": "frontend/index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "start": "echo 'Static site - no start needed'"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "data-science",
+    "finance",
+    "ubc",
+    "krishna-paudel"
+  ],
+  "author": "Krishna Paudel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skp1008/portfolio-website.git"
+  },
+  "homepage": "https://krishna-paudel.vercel.app",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
