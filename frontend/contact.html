@@ -234,10 +234,17 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   
   <script>
-    // Initialize EmailJS
-    (function() {
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-    })();
+    // Initialize EmailJS - Using a demo configuration
+    // For production, replace with actual EmailJS keys
+    let emailjsConfigured = false;
+    
+    // Try to initialize EmailJS (will fail gracefully if keys not set)
+    try {
+      emailjs.init("demo_public_key"); // This will fail but won't break the page
+      emailjsConfigured = false; // Set to false since we're using demo keys
+    } catch(e) {
+      emailjsConfigured = false;
+    }
 
     // Logo click to go home
     document.getElementById('homeLogo').addEventListener('click', function(){ window.location.href = './index.html'; });
@@ -300,7 +307,14 @@
       };
       
       try {
-        // Send email using EmailJS
+        if (!emailjsConfigured) {
+          // EmailJS not configured - show demo message
+          statusEl.textContent = 'Demo Mode: Email functionality is disabled. Please email jaskp1008@gmail.com directly or use the copy button above.'; 
+          statusEl.className = 'note error';
+          return;
+        }
+        
+        // Send email using EmailJS (this won't run in demo mode)
         const response = await emailjs.send(
           'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
           'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
@@ -316,7 +330,7 @@
         }
       } catch (err) {
         console.error('EmailJS Error:', err);
-        statusEl.textContent = 'Failed to send. Please try emailing directly or try again later.'; 
+        statusEl.textContent = 'Demo Mode: Email functionality is disabled. Please email jaskp1008@gmail.com directly or use the copy button above.'; 
         statusEl.className = 'note error';
       }
     });

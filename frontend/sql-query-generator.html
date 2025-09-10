@@ -750,26 +750,9 @@
     }
 
     async function loadChatHistory() {
-      try {
-        const response = await fetch('/sessions');
-        const data = await response.json();
-        
-        const chatList = document.getElementById('chatList');
-        chatList.innerHTML = '';
-        
-        if (data.sessions && data.sessions.length > 0) {
-          data.sessions.forEach(session => {
-            const chatItem = createChatItem(session);
-            chatList.appendChild(chatItem);
-          });
-        } else {
-          chatList.innerHTML = '<p style="color: #666; text-align: center; padding: 20px; font-size: 0.85rem;">No previous chats</p>';
-        }
-      } catch (err) {
-        console.error('Error loading chat history:', err);
-        const chatList = document.getElementById('chatList');
-        chatList.innerHTML = '<p style="color: #666; text-align: center; padding: 20px; font-size: 0.85rem;">Error loading chats</p>';
-      }
+      // Always show "Access Denied" instead of trying to load from backend
+      const chatList = document.getElementById('chatList');
+      chatList.innerHTML = '<p style="color: #ff6666; text-align: center; padding: 20px; font-size: 0.85rem;">Access Denied - Backend Offline</p>';
     }
 
     function createChatItem(session) {
@@ -892,40 +875,19 @@
       const loadingMessage = addLoadingMessage();
       
       try {
-        const response = await fetch('/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: message,
-            session_id: currentSessionId
-          })
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to get response from server');
-        }
-        
-        const data = await response.json();
+        // Always show "Access Denied" message instead of trying to connect to backend
         
         // Remove loading message
         loadingMessage.remove();
         
-        // Update current session ID
-        currentSessionId = data.session_id;
-        
-        // Add assistant response
+        // Add access denied response
         addMessageToChat({
           role: 'assistant',
-          content: data.explanation,
+          content: 'Access Denied: This SQL Query Generator is currently offline for security reasons. The backend service has been disabled for this demo version.',
           timestamp: new Date().toISOString(),
-          sql_query: data.sql_query,
-          explanation: data.explanation
+          sql_query: null,
+          explanation: 'This tool requires backend infrastructure that is not available in the static deployment. For a live demo, please contact Krishna Paudel directly.'
         });
-        
-        // Reload chat history to show new/updated session
-        loadChatHistory();
         
       } catch (err) {
         console.error('Error sending message:', err);
