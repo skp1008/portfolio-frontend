@@ -1,6 +1,0 @@
-[build]
-builder = "nixpacks"
-
-[deploy]
-startCommand = "uvicorn deploy_stuff.llm_chatbot_backend:app --host 0.0.0.0 --port $PORT"
-healthcheckPath = "/health"
