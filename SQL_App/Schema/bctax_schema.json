@@ -1,0 +1,774 @@
+{
+  "BCTAX_ATTRIB_RATES": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory Date and time the record was last updated <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_BATCHES": [
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the user that created this batch. None Page: 8 System: BCTAX"
+    },
+    {
+      "column": "CREATED_DATE",
+      "type": "DATE()",
+      "description": "Date and time the batch was created. None. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_BILLPARM": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. Page: 16 System: BCTAX"
+    }
+  ],
+  "BCTAX_DEFERRALS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_EFORM_RECIPIENTS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date this record was last changed. Mandatory. Page: 21 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The person who last changed this record. Mandatory. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_EFORM_TEMPLATES": [
+    {
+      "column": "TAXSALE_ACCOUNT_WIN",
+      "type": "NUMBER()",
+      "description": "Indicates if this template is be be made available in the tax sale for account attachment window. Mandatory. 0 - No 1 - Yes Page: 23"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date this record was last changed. Mandatory. System maintained."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The person who last changed this record. Mandatory. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_EH_APPLICATIONS": [
+    {
+      "column": "CREATED_DATE_TIME",
+      "type": "DATE()",
+      "description": "The date and time that the revision was created. Mandatory. Page: 43 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System Entered <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_EH_CLAIM_NUMBERS": [
+    {
+      "column": "EH_CLAIM_NUMBER_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Unique Key Must be 'EH-CLAIM-NUMBERS'. None"
+    },
+    {
+      "column": "EH_CLAIM_NUMBER",
+      "type": "NUMBER()",
+      "description": "The last claim number for Home Owner Grants Non System Generated <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None System Entered <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None System Entered <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_EH_PARAMETERS": [
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_IMP_PAY": [
+    {
+      "column": "IMP_FILE_NAME",
+      "type": "VARCHAR2(254)",
+      "description": "The filename of the file that was imported in the tax payments program. None."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Page: 50 System: BCTAX"
+    }
+  ],
+  "BCTAX_INSTAL_INT_CONTROL": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time on which this record was last changed. Mandatory Page: 53 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory System Generated <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_INSTAL_INT_RATES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_INTEREST": [
+    {
+      "column": "INTEREST_TYPE",
+      "type": "CHAR(1)",
+      "description": "Identifies which type of interest record this is. D - DAILYS S - SETTING A - ANNUAL <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "INTEREST_DESC",
+      "type": "VARCHAR2(50)",
+      "description": "User enterable description on SETTING type records. None. User Entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DAILY_STEP",
+      "type": "NUMBER()",
+      "description": "This is only available on row os type \"D\".  This daily step is the amount that is added to the interest rate for None. The system calculates and maintains this value."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_LEVIES": [
+    {
+      "column": "EXEMPT_FULL_VAL_FARM",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "EXCLUDE_AVG_ASSESS_I",
+      "type": "NUMBER()",
+      "description": "This is a flag to indicate whether or not to exempt the full value of farm outbuildings from the calculated notice details levy amount as follows: Notice details levy amount = ( Notice details levy amount - Case When Exempt full value of Farm Outbuildings flag is 1"
+    }
+  ],
+  "BCTAX_MORTGAGE_COMPANIES": [
+    {
+      "column": "ADDITIONAL_COMMENTS",
+      "type": "VARCHAR2(2000)",
+      "description": "This field contains additional contact information for the mortgage company.  The format is free-form, and it is not intended to be usde by any other queries or reports. None. Page: 70"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_MORTGAGES": [
+    {
+      "column": "MORT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "Mortgage number of this mortgage. Optional Page: 72 System: BCTAX"
+    },
+    {
+      "column": "MORT_REFERENCE",
+      "type": "VARCHAR2(100)",
+      "description": "Reference field pertaining to this mortgage. Optional User Entered. <ANON_RULE>VISIBLE KEY PK</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_NOTICE": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Page: 79 System: BCTAX"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_NTCE_DTL": [
+    {
+      "column": "START_DATE",
+      "type": "DATE()",
+      "description": "The start date for this levy.  If null the levy is assumed to start on Jan 1 of the current notice year. Mandatory Page: 84 System: BCTAX"
+    },
+    {
+      "column": "END_DATE",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> The end date for this levy.  If null the levy is assumed to end on Dec 31 of the current notice year. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Login userid. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_PARAMETERS": [
+    {
+      "column": "EMAIL_BULK_EMAIL_PRIVI",
+      "type": "NUMBER()",
+      "description": "In Tax eBilling, this is the number of emails a user needs to have security privilege to send. This number shold be greater than the value in"
+    },
+    {
+      "column": "EMAIL_REENTRY_THRESHOLD",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "EBILL_ATTACH_BILL",
+      "type": "NUMBER()",
+      "description": "Controls whether the generated bills are attached to eBill email records. NULL, 0, or 1. User Checked. 0 - bills are NOT attached to the email records. 1 or NULL - bills are attached to the email records."
+    },
+    {
+      "column": "EBILL_VERIFY_PDF",
+      "type": "NUMBER()",
+      "description": "NULL, 0, or 1. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> \\\\big2\\sw\\Tempest\\T8Prod\\REPORTS\\TLRPT02.QRP TEMPEST CONFIDENTIAL"
+    }
+  ],
+  "BCTAX_PENALTY_CONTROL": [
+    {
+      "column": "BALANCE_DATE",
+      "type": "DATE()",
+      "description": "Folios with outstanding balances up to and including this date are applied a penalty. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Page: 106"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time on which this record was last changed. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_PERSON_TYPES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Page: 108 System: BCTAX"
+    }
+  ],
+  "BCTAX_PREPAY_CONTROL": [
+    {
+      "column": "PREPAY_MAX_PRIOR_TA",
+      "type": "NUMBER()",
+      "description": "Determines if last years taxes are to be used as the maximum prepayment allowed.  Note that a tax increase equal to the TAX_INCREASE field will be added to this maximum (the tax increase may be 0). If Prepay_Max_Prior_Taxes is 1 and last years taxes do not exist or are zero, then no prepayments will be allowed (effectively a maximum of zero)."
+    },
+    {
+      "column": "TAX_INCREASE",
+      "type": "NUMBER()",
+      "description": "If entered this percentage is added on to the prior year taxes to determine the maximum prepayment amount. No validation if PREPAY_MAX_PRIOR_TAXES != 1 If PREPAY_MAX_PRIOR_TAXES = 1 then the TAX_INCREASE must be >= 0. User entered."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time on which this record was last changed. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_PREPAY_INT_RATES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time on which this record was last changed. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_PREPAY_YEAR_CONTROL": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time on which this record was last changed. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_PROCESSING_ERRORS": [
+    {
+      "column": "ERROR_DESC",
+      "type": "VARCHAR2(250)",
+      "description": "Description of the error or warning Mixed case. Page: 116 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_RATES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_REMINDER_CAT_PARAMS": [
+    {
+      "column": "REMINDER_CAT_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Unique generated ID for this reminder cat parameters"
+    },
+    {
+      "column": "REMINDER_PARM_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Reminder parameter that contains these categories. Mandatory. Muse existed in the bctax_reminder_param table System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CATEGORY_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Category Id of a utility route category. Mandatory. Must existed in the ub_route_categories table System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_REMINDER_LINE_ITEMS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Page: 124 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_REMINDER_PARAMS": [
+    {
+      "column": "BILL_EBILL_BACK_PAGE",
+      "type": "VARCHAR2(36)",
+      "description": "This is the back page doc/image id user selected to be user as the default for this reminder template. Must exist in TEMPEST_DOC_IMAGES From TEMPEST_DOC_IMAGES <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_REMINDER_PARAMS_EXT": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Page: 136 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Login userid <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_REMINDER_XREF": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on."
+    },
+    {
+      "column": "MANDATORY",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record."
+    },
+    {
+      "column": "MANDATORY",
+      "type": "",
+      "description": ""
+    }
+  ],
+  "BCTAX_RETRO_HOG_APP": [
+    {
+      "column": "EXPORTED_FLAG",
+      "type": "NUMBER()",
+      "description": "Denotes whether or not a given record has already been included in an export file for the province. None TX_PROV_HOG_EXPORT process <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "PRINT_CIVIC",
+      "type": "VARCHAR2(1)",
+      "description": "Flag indicating whether or not the civic address should be printed on the claim form. Note: The civic address should only be printed on the claim form if it is different from the mailing address. 1 - If the user wishes to print the civic address on the claim form. 2 - If the user does NOT wish to print the civic address on the claim form."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_RETRO_HOG_CLAIM": [
+    {
+      "column": "STATUS",
+      "type": "VARCHAR2(32)",
+      "description": "Status of the retro home owner grant claim. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "AVAILABLE",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "CLOSED",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_TRANSACT": [
+    {
+      "column": "SORT_ORDER",
+      "type": "VARCHAR2(10)",
+      "description": "For viewing purposes transactions are sorted by effective date, however when multiple transactions are generated on the same date (like a HOG import process or editing HOGs that causes transaction to be reversed) then this field is used to indicate the desired order of events. None. Possible values:"
+    },
+    {
+      "column": "SUPPRESS_TRIGGERS",
+      "type": "NUMBER()",
+      "description": "This flag is used by the system to identify if the normal triggers on this table should be suppressed. Values of NULL or 0 (or any value other that a 1) indicate that the triggers will be run. A value of 1 indicates that the triggers should be suppressed. No specific validation is applied to this field. NULL, 0 or any value other than 1 will be considered a FALSE setting and the triggers will NOT be"
+    }
+  ],
+  "BCTAX_TRANTYPES": [
+    {
+      "column": "SYSTEM_GENERATED",
+      "type": "NUMBER()",
+      "description": "This is a flag indicating whether or not a transaction type or subtype record is system generated. All type/subtype records inserted by the INSTALL script are system generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_TS_ACCOUNT_PIDS": [
+    {
+      "column": "CHARGE_NUMBER",
+      "type": "VARCHAR2(26)",
+      "description": "The Land Titles charge number that was returned from land titles when the Tax Sale charge was filed. Uppercase. Optional. Page: 164 System: BCTAX"
+    },
+    {
+      "column": "REMOVAL_CHARGE_NUM",
+      "type": "VARCHAR2(26)",
+      "description": "The Land Titles charge number that was returned from land titles when the Tax Sale charge was deemed removed. Uppercase. Optional. User maintained. <ANON_RULE>MANUAL</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_TS_ACCOUNTS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Page: 170 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_TS_BATCHES": [
+    {
+      "column": "CREATED_DATE_TIME",
+      "type": "DATE()",
+      "description": "This is the date and time when the batch was created. Mandatory. Page: 174 System: BCTAX"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The userid of the person who created the batch. Mandatory.  Upper case. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory.  Upper case. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_TS_GL_CODES": [
+    {
+      "column": "SOURCE_CODE",
+      "type": "VARCHAR2(50)",
+      "description": "GL code for the source side of the transaction. This is the GL code that gets posted for the transaction amount. Optional. Must exist on the GL_DISTCODE table if entered. Page: 176"
+    },
+    {
+      "column": "OFFSET_CODE",
+      "type": "VARCHAR2(50)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> GL code for the offset side of the transaction. This is the GL code that gets posted for the transaction amount * -1. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_TS_INTEREST": [
+    {
+      "column": "INTEREST_TYPE",
+      "type": "CHAR(1)",
+      "description": "Identifies which type of interest record this is. D - DAILYS S - SETTING A - ANNUAL <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "INTEREST_DESC",
+      "type": "VARCHAR2(50)",
+      "description": "User enterable description on SETTING type records. None. User Entered."
+    },
+    {
+      "column": "DAILY_STEP",
+      "type": "NUMBER()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is only available on row os type \"D\".  This daily step is the amount that is added to the interest rate for THIS day to get to the NEXT day.  If you need to calculate daily interest owing (ie from this day forward, assuming no balance or rate changes, the person owes $1.25 per day in interest charges) then"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_TS_NOTES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Page: 180 System: BCTAX"
+    }
+  ],
+  "BCTAX_TS_PARAMETERS": [
+    {
+      "column": "REDEMP_INV_BOT_MSG_",
+      "type": "VARCHAR2(100)",
+      "description": "Redemption Invoice Bottom Message Line 4.  This is the first of the message lines on the bottom section of the redemption invoice. Mixed case. Optional. Page: 193"
+    },
+    {
+      "column": "REDEMP_INV_BOT_MSG_",
+      "type": "VARCHAR2(100)",
+      "description": "Redemption Invoice Bottom Message Line 5.  This is the first of the message lines on the bottom section of the redemption invoice. Mixed case. Optional. User entered."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System Generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "BCTAX_TS_TRANSACT_TYPES": [
+    {
+      "column": "TRANSACTION_TYPE_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Id that uniquely identifies record on this table. Mandatory, unique."
+    },
+    {
+      "column": "TYPE",
+      "type": "VARCHAR2(15)",
+      "description": "The type of the transaction. Mandatory, uppercase. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "UPSET",
+      "type": "VARCHAR2(15)",
+      "description": "The sub type of the transaction. Mandatory, uppercase. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_TS_TRANSACTIONS": [
+    {
+      "column": "CREATED_DATE_TIME",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was originally created on. Mandatory. Page: 204 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System Generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_WORKFLOW": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date and time that this row was added to the table. None. Page: 208 System: BCTAX"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "Logon id of the user that entered this data or caused this event to be generated. None. System generated <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "BCTAX_YEARS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ]
+}

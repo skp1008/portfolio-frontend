@@ -1,0 +1,1 @@
+web: echo "Starting unified app..." && uvicorn llm_chatbot_backend:app --host 0.0.0.0 --port $PORT

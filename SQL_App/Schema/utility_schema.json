@@ -1,0 +1,2988 @@
+{
+  "UB_ACCOUNT_NUMBER": [
+    {
+      "column": "RANGE_END",
+      "type": "NUMBER()",
+      "description": "The largest account number available for the range of account numbers for any associated categories. Should never be less than the largest account number for any associated categories. Page: 2"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Maintained by the system. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_ACCOUNT_RANGES": [
+    {
+      "column": "CATEGORY_ID",
+      "type": "VARCHAR2(26)",
+      "description": "The category that the account number range is associated with. Mandatory. System Maintained.  Must exist in UB_ROUTE_CATEGORIES table. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "ACCOUNT_NUMBER_ID",
+      "type": "VARCHAR2(36)",
+      "description": "The account number range that the category is associated with. Mandatory. System Maintained.  Must exist in UB_ACCOUNT_NUMBER table."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who last changed this record.  Effectively equates to whomever associated a category with a specific account number range."
+    }
+  ],
+  "UB_ACCOUNT_TYPE_PERSON_TYPES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be null. Taken from the Database Login userid.  System entered. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_ACCOUNT_TYPES": [
+    {
+      "column": "ACCOUNT_TYPE",
+      "type": "VARCHAR2(15)",
+      "description": "Description of a type of account. Upper Case. Cannot be null. User entered in misc maintenance. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "ACCOUNT_TYPE_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Unique Id for each account type / route category combination record in this table. Cannot be null. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CATEGORY_ID",
+      "type": "VARCHAR2(26)",
+      "description": "The Id for the route category that this account type is valid for - copied from ub_route_categories table. Cannot be null. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be null. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be null. Taken from the Database Login userid.  System entered <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_ADJ_TYPES": [
+    {
+      "column": "TRANSFER_FROM_TAXES",
+      "type": "VARCHAR2(15)",
+      "description": "Values are determined by what is on the bctax_trantypes table - sub_type column. Must be selected if Transfer_from_taxes_window is 1. Cannot be selected if Transfer_from_taxes_window is 0. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None Taken from the Database Login userid.  System entered <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_AMENDED_BILL_TRANS": [
+    {
+      "column": "ITEM_ID",
+      "type": "VARCHAR2(26)",
+      "description": "If the ITEM is set to TRANS then this will be the transaction id of the transactions that were picked up and printed on this amended bill. Should not be null. System maintained. Set by adjustment program. If the ITEM is set to BILL then this will be the"
+    },
+    {
+      "column": "PREV_DISCOUNT_DATE",
+      "type": "DATE()",
+      "description": "This is only used on the BILL record.  It is the discount date of the Previous bill. None. System Maintained.  Taken from the transaction that is reset to point to the new amended bill"
+    }
+  ],
+  "UB_ARCHIVE_LOG": [
+    {
+      "column": "BATCH_NUMBER",
+      "type": "NUMBER()",
+      "description": "The batch number the bill was generated in. None"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is displayed on the Utility Account Details screen, Archives tab, Batch column. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BATCH_LAST_USED_BY_USER": [
+    {
+      "column": "BATCH_LAST_USED_ID",
+      "type": "VARCHAR2(36)",
+      "description": "This is the unique identifier for the entry in the the table. Mandatory. Unique."
+    },
+    {
+      "column": "USER_ID",
+      "type": "VARCHAR2(26)",
+      "description": "This is a foreign key to the tempest_resources table. Mandatory."
+    },
+    {
+      "column": "BATCH_ID",
+      "type": "VARCHAR2(36)",
+      "description": "This is a foreign key to the ub_batches table. Mandatory. UB_BATCHES.BATCH_ID"
+    },
+    {
+      "column": "BATCH_TYPE",
+      "type": "VARCHAR2(10)",
+      "description": "This is the type of batch, it tells us which program controls this batch of transactions. None."
+    },
+    {
+      "column": "BRANDING",
+      "type": "VARCHAR2(40)",
+      "description": "Used to identify the brand for each batches. NOTE: Not all batches will be branded (such as Cash batches). Only possible values are: - UTILITY - VACANCY TAX UB_BATCHES.BATCH_TYPE"
+    }
+  ],
+  "UB_BATCHES": [
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the user that created this batch. None Page: 22 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_BILL_CYCLE_CUSTOMERS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The userid of the person who last updated this record. Mandatory. Page: 25 System: UTILITY"
+    }
+  ],
+  "UB_BILL_CYCLE_P_READ_CYCLE_P": [
+    {
+      "column": "CREATED_DATE",
+      "type": "DATE()",
+      "description": "The date that this Billing Cycle Period Reading Period was created on. Mandatory. Page: 27 System: UTILITY"
+    },
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "The user who created this Billing Cycle Period Reading Period. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date that this Billing Cycle Period Reading Period was last updated on. Mandatory. System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The user who last updated this Billing Cycle Period Reading Period. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_CYCLE_PERIODS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date that this Billing Cycle Period was last updated. Mandatory. Page: 31 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The userid of the person who last updated this Billing Cycle Period. Mandatory. System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_CYCLE_ROUTES": [
+    {
+      "column": "END_YEAR",
+      "type": "NUMBER()",
+      "description": "The billing year that the route's association with the billing cycle ends. None. Page: 33 System: UTILITY"
+    },
+    {
+      "column": "END_PERIOD",
+      "type": "NUMBER()",
+      "description": "The billing period that the route's association with the billing cycle ends. None. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE",
+      "type": "DATE()",
+      "description": "The date the row was created. Mandatory. System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "The user who created the row. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date the row was last updated. Mandatory. System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The user who last update the row. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_CYCLES": [
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "The userid of the person that created this Billing Cycle. Mandatory. Page: 35 System: UTILITY"
+    },
+    {
+      "column": "CREATED_DATE",
+      "type": "DATE()",
+      "description": "The date that this Billing Cycle was created on. Mandatory. System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The userid of the person who last updated this Billing Cycle. Mandatory. System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date that this Billing Cycle was last updated. Mandatory. System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_EBILL_BATCHES": [
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record is created. Mandatory Page: 38 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id who last modified this record. Mandatory System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record is modified. Mandatory. System Maintained."
+    },
+    {
+      "column": "LAST_MODIFIED_USER",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "LAST_MODIFIED_DATE",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the user who last modified this batch.  When a user process and pull list file or a individual mail piece, this column will be updated to reflected a change is done on this batch. This column is for performace purpose"
+    }
+  ],
+  "UB_BILL_EBILL_ERRORS": [
+    {
+      "column": "EBILL_ERROR_DESC",
+      "type": "VARCHAR2(250)",
+      "description": "This is the description of the error. Mandatory Page: 40 System: UTILITY"
+    },
+    {
+      "column": "EBILL_ERROR_NOTES",
+      "type": "VARCHAR2(500)",
+      "description": "This is additional notes for the error.  Currently, it is not used. None. System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id who created this record. Mandatory. System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record was created. Mandatory System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id who last modified this record. Mandatory System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record was last modified. Mandatory System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_EBILL_EVENTS": [
+    {
+      "column": "EVENT_DESCRIPTION",
+      "type": "VARCHAR2(1000)",
+      "description": "This is the description of the event. Mandatory Page: 42 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record was last modified on. Mandatory System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id who last modified this record. Mandatory System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_EBILL_LOGS": [
+    {
+      "column": "EBILL_FILE_IS_ARCHIVED",
+      "type": "NUMBER()",
+      "description": "The flag that determines whether or not the ebill_file was archived. None. Page: 51 System: UTILITY"
+    },
+    {
+      "column": "EBILL_MERGED_FILE_IS_",
+      "type": "NUMBER()",
+      "description": "The flag that determines whether or not the ebill_merged_file was archived. None. System Maintained. Expected Values: 1 = archived 0/null = not archived"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record is created on. Mandatory System Maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id who created this record. Mandatory System Maintaiend <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record was last modified on. Mandatory System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id this record was last modified by Mandatory. System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILL_ERRORS": [
+    {
+      "column": "SESSION_ID",
+      "type": "VARCHAR2(36)",
+      "description": ""
+    },
+    {
+      "column": "BILL_CYCLE_ID",
+      "type": "VARCHAR2(36)",
+      "description": "See ub_bill_cycles for detail. None."
+    },
+    {
+      "column": "ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "This is the account number that is being billed.  See ub_customers.account_number for detail. None."
+    },
+    {
+      "column": "ERROR_TYPE",
+      "type": "VARCHAR2(10)",
+      "description": "Either ERROR or WARNING. None."
+    },
+    {
+      "column": "ERROR_DESC",
+      "type": "VARCHAR2(250)",
+      "description": "This is the description for the error or warning. None."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "<ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> System Maintained.  From ub_bill_cycles table. System Maintained.  Null or from ub_customers"
+    }
+  ],
+  "UB_BILLPRT_ERRORS": [
+    {
+      "column": "BATCH_NUMBER",
+      "type": "NUMBER()",
+      "description": "This is the utility bill print batch. None."
+    },
+    {
+      "column": "ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "This is the account number the error is for. None. System Maintained. <ANON_RULE>VISIBLE KEY FK</ANON_RULE> <ANON_PARAM1>UB_CUSTOMERS</ANON_PAR"
+    },
+    {
+      "column": "ERROR_DESC",
+      "type": "VARCHAR2(200)",
+      "description": "This is the error description for the error. None. User Entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_BILLS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None Page: 58 System: UTILITY"
+    },
+    {
+      "column": "ORIGINAL_BILL_DATE",
+      "type": "DATE()",
+      "description": "This is the date that the original bill for the year and period was created.  If the Bill Type is ORIGINAL, this date will be identical to the Bill Date. None System Maintained. See comments under description."
+    },
+    {
+      "column": "CONVERSION_FLAG",
+      "type": "VARCHAR2(1)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This flag is for the purpost of converting data into the utility system.  Where more then 1 historical bill is being converted for a single customer.  The following rules should be used. 1. If data can be converted such that payments and"
+    }
+  ],
+  "UB_CONTAINER_EVENTS": [
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Page: 60 System: UTILITY"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> This is the system date and time that this record was created. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_CONTAINER_TYPES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the userid of the person who last changed this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> This is the system date and time that this record was last changed on."
+    }
+  ],
+  "UB_CONTAINERS": [
+    {
+      "column": "DATE_REMOVED",
+      "type": "DATE()",
+      "description": "Date container was removed from inventory. Optional. Date. This can only be set if the status is set to DESTROYED, LOST or STOLEN. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Page:"
+    },
+    {
+      "column": "RFID_NUMBER",
+      "type": "VARCHAR2(30)",
+      "description": "Radio frequency id assigned to this container. Optional. Upper case.  Must be unique if not blank. User entered."
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "<ANON_RULE>VISIBLE KEY PK</ANON_RULE> </TDG_ANON> This is the userid of the person who created this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. System generated."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who last changed this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_CUSTOMER_CONTAINERS": [
+    {
+      "column": "DATE_REMOVED",
+      "type": "DATE()",
+      "description": "Date that this container was unassigned from the utility account. Optional. Date. Page: 67 System: UTILITY"
+    },
+    {
+      "column": "NOTES",
+      "type": "VARCHAR2(250)",
+      "description": "User notes or reference information for the assignment. Optional. Mixed case. User entered. <ANON_RULE>NOTES</ANON_RULE> <ANON_PARAM1>0</ANON_PARAM1>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Login userid."
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> This is the system date and time that this record was created. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_CUSTOMER_EXPACCTS": [
+    {
+      "column": "CUSTOMER_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Id of customer. Must exist on UB_CUSTOMERS table. System maintained. <ANON_RULE>ACCOUNT ID FK</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "ADJ_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Id of an expense account adjustment type. Must exist on UB_ADJ_TYPES table where the source_type is 'E' System maintained based on user selection of an adjustment type."
+    },
+    {
+      "column": "PCT_TO_CHARGE",
+      "type": "NUMBER()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the percentage of the total outstanding charges that are to be paid from this expense account. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_CUSTOMER_METERS": [
+    {
+      "column": "CUSTOMER_SHARE",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "LATITUDE",
+      "type": "VARCHAR2(20)",
+      "description": ""
+    },
+    {
+      "column": "LONGITUDE",
+      "type": "VARCHAR2(20)",
+      "description": "This is the customer % share of the consumption to be used for calculating charges in the case of shared meters. 50 = 50 % None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_CUSTOMERS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. Page: 81 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_CUSTOMERS_XREF": [
+    {
+      "column": "NEW_ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "This is the new account number generated by Tempest for the utility account. None."
+    },
+    {
+      "column": "OLD_ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "This is the account number the utility account used before converting to Tempest. None. User Entered.  From converion file. \\\\big2\\sw\\Tempest\\T8Prod\\REPORTS\\TLRPT02.QRP TEMPEST CONFIDENTIAL"
+    }
+  ],
+  "UB_DEF_CUSTOMERS": [
+    {
+      "column": "TOTAL_UNITS",
+      "type": "NUMBER()",
+      "description": "This indicated the default value of the Units field (ub_customers.total_units) when creating a new account for the given route category and account type. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_DEF_SERVICES": [
+    {
+      "column": "NUMBER_OF_UNITS",
+      "type": "NUMBER()",
+      "description": "The default units used when adding this default service charge to an account (ub_services.number_of_units). None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_EAPPLY_TEMPLATE_RPLC_VARS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Upper. Page: 88 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Upper. Login userid. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_EAPPLY_TEMPLATES": [
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Page: 90 System: UTILITY"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Login userid. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_EBILL_DYNAMIC_PULLLISTS": [
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> Page: 92"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. System generated."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who last changed this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_EBILL_PULLLIST_OVERRIDES": [
+    {
+      "column": "OVERRIDE_TYPE",
+      "type": "VARCHAR2(30)",
+      "description": "This is the type of the override value. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> EMAIL TEMPLATE PREPRINTED FORM BACK PAGE"
+    },
+    {
+      "column": "OVERRIDE_VALUE",
+      "type": "VARCHAR2(36)",
+      "description": "This is the ID of the email template, pre-printed form or back page to use for the pull list. Mandatory System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created on. Mandatory System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_EFORM_OPTIONS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(30)",
+      "description": "This is the user that last updated this record None Page: 96 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date and time that this record was last updated on. None system maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(30)",
+      "description": "This is the user that created this record None system maintained <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date and time this record was created on None system maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_EFORM_RECIPIENTS": [
+    {
+      "column": "EFORM_ID",
+      "type": "VARCHAR2(36)",
+      "description": "This is the id of the eform from TEMPEST_EFORMS None <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "PERSON_TYPE_ID",
+      "type": "VARCHAR2(36)",
+      "description": "his is the id of the person type that has been selected as a recipient for this eform None"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(30)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the date and time that this record was created. Records are not updated, when changes are made to the eform the list of selected recipients is deleted and rewritten"
+    }
+  ],
+  "UB_GL_WORK": [
+    {
+      "column": "BATCH_NUMBER",
+      "type": "NUMBER()",
+      "description": "See ub_transactions.batch_number for detail. None."
+    },
+    {
+      "column": "BATCH_TYPE",
+      "type": "VARCHAR2(1)",
+      "description": "See ub_transactions.batch_type for detail. None. System Maintained.  From ub_transactions. System Maintained.  From ub_transactions."
+    },
+    {
+      "column": "REFERENCE",
+      "type": "VARCHAR2(100)",
+      "description": "Possible values: None. System Maintained. - ub_rev_codes.rev_area If the transaction is for transferring of monies between funds/bills on an account"
+    },
+    {
+      "column": "SOURCE_GL_CODE",
+      "type": "VARCHAR2(50)",
+      "description": "See glint_transub.revenue_code for detail. None."
+    },
+    {
+      "column": "OFFSET_GL_CODE",
+      "type": "VARCHAR2(50)",
+      "description": "See glint_transub.receivable_code for detail. None."
+    },
+    {
+      "column": "EFFECTIVE_DATE",
+      "type": "DATE()",
+      "description": "See ub_transactions.effective_date for detail. None."
+    },
+    {
+      "column": "AMOUNT",
+      "type": "NUMBER()",
+      "description": "This is the amount being posted to the GL."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. None. System Maintained.  From glint_transub."
+    }
+  ],
+  "UB_HISTORY_BILLS": [
+    {
+      "column": "DELETED_FLAG",
+      "type": "VARCHAR2(1)",
+      "description": "See ub_bills.deleted_flag for detail. None. Page: 102 System: UTILITY"
+    },
+    {
+      "column": "ARCHIVED_BATCH_NUMB",
+      "type": "NUMBER()",
+      "description": "This is the batch number all these historic records belong to.  This is the last batch_number in tempest_purge_batches table. None. System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_HISTORY_READ": [
+    {
+      "column": "METER_DIRECTION",
+      "type": "NUMBER()",
+      "description": "See ub_readings.meter_direction for details. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "BILL_MSG",
+      "type": "VARCHAR2(254)",
+      "description": "See ub_readings.bill_msg for details. None. <ANON_RULE>NOTES</ANON_RULE> <ANON_PARAM1>0</ANON_PARAM1> <ANON_PARAM2>5</ANON_PARAM2> <ANON_PARAM3>75</ANON_PARAM3> </TDG_ANON>"
+    },
+    {
+      "column": "REPLACED_FLAG",
+      "type": "VARCHAR2(1)",
+      "description": "See ub_readings.replaced_flag for details. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "ARCHIVED_BATCH_NUMB",
+      "type": "NUMBER()",
+      "description": "This is the batch number all these historic records belong to.  This is the last batch_number in tempest_purge_batches table. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date stamp from the ub_readings table. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid from ub_readings table. None. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> System Maintained.  From ub_readings."
+    }
+  ],
+  "UB_HISTORY_TRANS": [
+    {
+      "column": "INTERIM_CODE",
+      "type": "VARCHAR2(1)",
+      "description": ""
+    },
+    {
+      "column": "SORT_ORDER",
+      "type": "NUMBER()",
+      "description": "This code indicates interim transactions types.  All transactions of type interim are reversed in the next REAL billing period. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> For viewing purposes transactions are sorted by effective date, however when multiple transactions"
+    },
+    {
+      "column": "METER_GROUPING",
+      "type": "VARCHAR2(10)",
+      "description": "The meter grouping of the meter used to determine a metered charge. The meter grouping is copied from the Ub_Customer_Meters table. System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "ARCHIVED_BATCH_NUMB",
+      "type": "NUMBER()",
+      "description": "This is the batch number all these historic records belong to.  This is the last batch_number in tempest_purge_batches table. None. System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Must be the same for all records with the same master_trans_id. System generated."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who last changed this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_INSTALLED_BY_TYPES": [
+    {
+      "column": "INSTALLED_BY_TYPE_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Unique Id for each installed by type. Cannot be null.  Must be unique. System  generated."
+    },
+    {
+      "column": "INSTALLED_BY_TYPE",
+      "type": "VARCHAR2(30)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Unique type of person/company that can install meters. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be null. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be null. Taken from the Database Login userid.  System entered. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_ITRON_DEVICE_EXPORTS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Page: 120 System: UTILITY"
+    }
+  ],
+  "UB_ITRON_DEVICE_HEADER": [
+    {
+      "column": "BATCH_NUMBER",
+      "type": "NUMBER()",
+      "description": "Batch number of the Device Management export. Mandatory. Maintained by system."
+    },
+    {
+      "column": "BATCH_ID",
+      "type": "VARCHAR2(36)",
+      "description": "A unique id for each record. This is used to link this header to the timing headers table using hidden_id1 none"
+    },
+    {
+      "column": "EXPORTED_DATE",
+      "type": "DATE()",
+      "description": "The date and time the batch was exported."
+    },
+    {
+      "column": "EXPORTED_BY",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who exported the batch."
+    },
+    {
+      "column": "METERS_EXPORTED",
+      "type": "NUMBER()",
+      "description": "The amount of records that were exported in the batch. None. None. None."
+    },
+    {
+      "column": "METERS_ADDED",
+      "type": "NUMBER()",
+      "description": "The amount of meters (devices) that will be added to the Itron system in the batch. None."
+    },
+    {
+      "column": "METERS_MODIFIED",
+      "type": "NUMBER()",
+      "description": "The amount of meters (devices) that will be modified in the Itron system in the batch. None."
+    },
+    {
+      "column": "METERS_REMOVED",
+      "type": "NUMBER()",
+      "description": "The amount of meters (devices) that will be removed from the Itron system in the batch. None."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> system generated"
+    }
+  ],
+  "UB_ITRON_DEVICE_PROCEDURE": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Page: 126 System: UTILITY"
+    }
+  ],
+  "UB_ITRON_EXPORTED_HEADERS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date that the last update to this record occurred on. Mandatory Page: 128 System: UTILITY"
+    }
+  ],
+  "UB_ITRONCC_ACCOUNT": [
+    {
+      "column": "ITRON_ACCOUNT_NUMBE",
+      "type": "VARCHAR2(100)",
+      "description": "Utility account number, in our case it will be the same as the ITRON_ACCOUNT_ID. Mandatory. ub_customers.account_number"
+    },
+    {
+      "column": "ITRON_ACCOUNT_TYPE",
+      "type": "VARCHAR2(10)",
+      "description": "Always set to 'BILLING'"
+    },
+    {
+      "column": "ITRON_STATUS",
+      "type": "VARCHAR2(10)",
+      "description": "If the Utility account has a stop date then use INACTIVE, otherwise use ACTIVE."
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STAR",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STOP",
+      "type": "DATE()",
+      "description": "The start date of the Utility account. The stop date of the Utility account."
+    },
+    {
+      "column": "ITRON_CUSTOMER_LINK_",
+      "type": "VARCHAR2(100)",
+      "description": "Used to link to the Customer data element (UB_ITRONCC_CUSTOMER). Mandatory. Mandatory. None. None."
+    },
+    {
+      "column": "ITRON_CUSTOMER_LINK_",
+      "type": "DATE()",
+      "description": "Start date of the link to the Customer data element (UB_ITRONCC_CUSTOMER). None."
+    },
+    {
+      "column": "ITRON_CUSTOMER_LINK_",
+      "type": "DATE()",
+      "description": "Stop date of the link to the Customer data element (UB_ITRONCC_CUSTOMER). None."
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> System Generated."
+    }
+  ],
+  "UB_ITRONCC_ACCOUNTSPCHANNEL": [
+    {
+      "column": "ITRON_SP_CHANNEL_STA",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_SP_CHANNEL_STO",
+      "type": "DATE()",
+      "description": "The earliest installed date for the selected meter group on the Utility account.  This means that if there was a meter on the account from 2000, and then a new meter was installed on the account and the old meter was removed, the value for this column would be the installed date from 2000. None. This is the same as the"
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System Generated. System Generated."
+    }
+  ],
+  "UB_ITRONCC_ADDRESS": [
+    {
+      "column": "ITRON_PROVINCE",
+      "type": "VARCHAR2(50)",
+      "description": "The province that the property is located in."
+    },
+    {
+      "column": "ITRON_POSTAL_CODE",
+      "type": "VARCHAR2(50)",
+      "description": "The postal code for the property. None. None."
+    },
+    {
+      "column": "ITRON_COUNTRY",
+      "type": "VARCHAR2(50)",
+      "description": "The country that the property is located in. Mandatory."
+    },
+    {
+      "column": "ITRON_SP_LINK_ID",
+      "type": "VARCHAR2(100)",
+      "description": "Used to link to the Service Point data element (UB_ITRONCC_SP). Must be a valid link to UB_ITRONCC_SP.ITRON_SP_ID."
+    },
+    {
+      "column": "ITRON_SP_LINK_START_D",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_SP_LINK_STOP_D",
+      "type": "DATE()",
+      "description": "Uses the following logic: ub_customers.account_number || ub_meters.meter_grouping The earliest installed date for the selected meter group on the Utility account.  This means that if there was a meter on the account from 2000, and then a new meter was installed on the account and the old meter was removed, the value for this column would be the installed date from 2000."
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> Page:"
+    }
+  ],
+  "UB_ITRONCC_CHANNELS": [
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Page: 143 System: UTILITY"
+    }
+  ],
+  "UB_ITRONCC_CUSTOMER": [
+    {
+      "column": "ITRON_CUSTOMER_ID",
+      "type": "VARCHAR2(100)",
+      "description": "Property number, which is the unique identifier in the Itron Customer Care system for the Customer data element. Mandatory."
+    },
+    {
+      "column": "ITRON_BUSINESS_NAME",
+      "type": "VARCHAR2(100)",
+      "description": "Name of the customer, not the business (as was decided in the original design).  The Itron Customer Care system searches by customer name using this field instead of the first/middle/last name, so this name should be the property owner instead of the names for the business."
+    },
+    {
+      "column": "ITRON_CUSTOMER_TYPE",
+      "type": "VARCHAR2(10)",
+      "description": "Hard-coded as 'RES' because Tempest does not store this data."
+    },
+    {
+      "column": "ITRON_FIRST_NAME",
+      "type": "VARCHAR2(100)",
+      "description": "If the last names of both owners (in a joint-owner situation) are the same, then this will contain first_name1 || ' / ' || first_name2 (ex. Jim / Jane), otherwise just use the primary owner's first name."
+    },
+    {
+      "column": "ITRON_MIDDLE_NAME",
+      "type": "VARCHAR2(100)",
+      "description": "The middle initial of the primary owner."
+    },
+    {
+      "column": "ITRON_LAST_NAME",
+      "type": "VARCHAR2(100)",
+      "description": "The last name of the primary owner, and if multiple owners exist on the property then the owner count (tdg_owner_count) will be appended to indicate to the Itron system that there are other owners on this property."
+    },
+    {
+      "column": "ITRON_STATUS",
+      "type": "VARCHAR2(10)",
+      "description": "Always set to 'ACTIVE'."
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STAR",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STOP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "The start date of the owner. The stop date of the owner. This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> None."
+    }
+  ],
+  "UB_ITRONCC_EXPORT_JOBS": [
+    {
+      "column": "JOB_NUMBER",
+      "type": "NUMBER()",
+      "description": "Every export is assigned the next sequential job number, which will always be unique. Mandatory."
+    },
+    {
+      "column": "JOB_ID",
+      "type": "VARCHAR2(36)",
+      "description": "A unique id for each record. This is used to link this header to the timing headers table using hidden_id1 None"
+    },
+    {
+      "column": "EXPORT_FILE",
+      "type": "VARCHAR2(600)",
+      "description": "This is the data file that was exported by the export job.  It is a full URL file name (path and file). None."
+    },
+    {
+      "column": "NUMBER_OF_RECORDS",
+      "type": "NUMBER()",
+      "description": "This is the number of records that were exported. None."
+    },
+    {
+      "column": "EXPORTED_DATE",
+      "type": "DATE()",
+      "description": "This is a date and time stamp of when the first export of this job number was run. This is a date and time stamp of when the first export of this job number was run."
+    },
+    {
+      "column": "EXPORTED_BY",
+      "type": "VARCHAR2(26)",
+      "description": "This is the user that ran the first export of this job number. This is the user that ran the first export of this job number. System Maintained."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "User that caused the last update to this record to occur.  Updated whenever an export is run. Mandatory. System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date that the last update to this record occurred on. Updated whenever an export is run. Mandatory. System Maintained. \\\\big2\\sw\\Tempest\\T8Prod\\REPORTS\\TLRPT02.QRP TEMPEST CONFIDENTIAL"
+    }
+  ],
+  "UB_ITRONCC_EXPORTJOBDETAILS": [
+    {
+      "column": "SORT_ORDER",
+      "type": "NUMBER()",
+      "description": "The sort order for the export records, which is based on the data element.  This is because the Itron Customer Care system requires the data elements to be sent in a specific order."
+    },
+    {
+      "column": "ACTION",
+      "type": "VARCHAR2(10)",
+      "description": "Used to specify what action needs to take place when sending the file - Add, Correct, Delete or DeleteLink the information in the Itron Customer Care system. Mandatory.  Below is the list of data elements, and what their corresponding sort order is. 10 - CUSTOMER 20 - ACCOUNT 25 - CUSTOMER (when updating the Account link"
+    },
+    {
+      "column": "XML_DATA",
+      "type": "VARCHAR2(1000)",
+      "description": "The data that will be put into the XML file.  This column will contain XML-formatted information and will be put directly into the export XML file. Mandatory."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> Page:"
+    }
+  ],
+  "UB_ITRONCC_METER": [
+    {
+      "column": "ITRON_STATUS",
+      "type": "VARCHAR2(100)",
+      "description": "Possible statuses that will be used: IN STOCK - the meter status is set to AVAILABLE. DECOMISSIONED - the meter status is set to LOST, DESTROYED OR STOLEN. DISCONNECTED - the meter is installed on a Utility account but is not turned on. ACTIVE - the meter is installed on a Utility account and is turned on. INACTIVE - none of the above."
+    },
+    {
+      "column": "ITRON_TIME_ZONE",
+      "type": "VARCHAR2(10)",
+      "description": "Hard-coded as 'PACIFICUS'. Mandatory."
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STAR",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STOP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "Hard-coded as the beginning of time (Jan 1, 1970). None. Hard-coded as the end of time (Jan 1, 2031). None. This is the system date and time that this record was last changed on."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> Page:"
+    }
+  ],
+  "UB_ITRONCC_RECORDINGDEVICE": [
+    {
+      "column": "ITRON_RECORDING_DEVI",
+      "type": "VARCHAR2(100)",
+      "description": "Unique identifier for the Recording Device, which uses the MIU ID along with '_W'. Mandatory."
+    },
+    {
+      "column": "ITRON_DEVICE_ID",
+      "type": "VARCHAR2(100)",
+      "description": "The Device Id, which uses the MIU ID along with '_W'. Mandatory."
+    },
+    {
+      "column": "ITRON_EXT_RECORDING_",
+      "type": "VARCHAR2(100)",
+      "description": "This is for the External Recording Device ID, which uses the MIU ID along with '_W'. Mandatory."
+    },
+    {
+      "column": "ITRON_TIME_ZONE",
+      "type": "VARCHAR2(50)",
+      "description": "Hard-coded as 'PACIFICUS'."
+    },
+    {
+      "column": "ITRON_RECORDING_DEVI",
+      "type": "VARCHAR2(50)",
+      "description": "Hard-coded as 'ENDPOINT'."
+    },
+    {
+      "column": "ITRON_EXT_SYSTEM_ID",
+      "type": "VARCHAR2(50)",
+      "description": "Hard-coded as 'FNAMR1'. Mandatory. Mandatory. Mandatory."
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STAR",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_EFFECTIVE_STOP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "Hard-coded as the beginning of time (Jan 1, 1970). None. Hard-coded as the end of time (Jan 1, 2031). None. This is the system date and time that this record was last changed on."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> ub_meters.miu_id || '_W'"
+    }
+  ],
+  "UB_ITRONCC_SP": [
+    {
+      "column": "ITRON_SP_ID",
+      "type": "VARCHAR2(100)",
+      "description": "Unique ID pointing to the utility account / meter group combination.  The Service Point is static, but the meters on that Service Point can change. Because of this, a Service Point is never considered to 'turn off' in the Itron Customer Care system even if there are no meters using the Service Point (it is still active and still exists). Itron explained that a Service Point is used to identify a pipe that goes from the main water line"
+    },
+    {
+      "column": "ITRON_COMMODITY_TYP",
+      "type": "VARCHAR2(10)",
+      "description": "Hard-coded as 'WATER'."
+    },
+    {
+      "column": "ITRON_TIME_ZONE",
+      "type": "VARCHAR2(10)",
+      "description": "Hard-coded as 'PACIFICUS'. Mandatory. Mandatory."
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> System Generated."
+    }
+  ],
+  "UB_ITRONCC_SPCHANNEL": [
+    {
+      "column": "ITRON_SP_LINK_ID",
+      "type": "VARCHAR2(100)",
+      "description": "Used to link to the Service Point data element (UB_ITRONCC_SP). Must be a valid link to UB_ITRONCC_SP.ITRON_SP_ID. Page: 162"
+    },
+    {
+      "column": "ITRON_SP_CHANNEL_STA",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "ITRON_SP_CHANNEL_STO",
+      "type": "DATE()",
+      "description": "Uses the following logic: ub_customers.account_number || ub_meters.meter_grouping The earliest installed date for the selected meter group on the Utility account.  This means that if there was a meter on the account from 2000, and then a new meter was installed on the account and the old meter was removed, the value for this column would be the installed date from 2000."
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> System Generated, based off of"
+    }
+  ],
+  "UB_ITRONCC_SPCHANNELSET": [
+    {
+      "column": "ITRON_SP_CH_INT_STOP",
+      "type": "DATE()",
+      "description": "The latest removed date for the selected meter group on the Utility account.  If the current meter on the meter group does not have a removed date, then this value will be NULL. None. This value is taken from the stop date of the Interval Channel on UB_ITRONCC_CHANNELS."
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System Generated. System Generated."
+    }
+  ],
+  "UB_ITRONFN_EXPORTJOBDETAILS": [
+    {
+      "column": "JOB_NUMBER",
+      "type": "NUMBER()",
+      "description": "This points to which export job this record was exported in. Mandatory."
+    },
+    {
+      "column": "BASELINE_XML",
+      "type": "VARCHAR2(2000)",
+      "description": "The data that will be put into the Baseline XML file. This column will contain XML-formatted information and will be put directly into the export XML file. Mandatory."
+    },
+    {
+      "column": "CONFIGURATION_XML",
+      "type": "VARCHAR2(2000)",
+      "description": "The data that will be put into the Configuration XML file.  This column will contain XML-formatted information and will be put directly into the export XML file. Mandatory. System Generated."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System Generated. System Generated."
+    }
+  ],
+  "UB_ITRONFN_RECORDS": [
+    {
+      "column": "ITRON_DEVICE_START_D",
+      "type": "DATE()",
+      "description": "Date from the OLD record if the meter & MIU ID match, otherwise the date the comparison is run"
+    },
+    {
+      "column": "ITRON_DEVICE_STOP_DA",
+      "type": "VARCHAR2(3)",
+      "description": "Hard coded as 'EOT'"
+    },
+    {
+      "column": "ITRON_DECODE_TYPE",
+      "type": "NUMBER()",
+      "description": "Hard coded as '256'"
+    },
+    {
+      "column": "ITRON_METER_LINK_STA",
+      "type": "DATE()",
+      "description": "The Meter Install Date."
+    },
+    {
+      "column": "ITRON_METER_LINK_STO",
+      "type": "VARCHAR2(3)",
+      "description": "Hard coded as 'EOT'"
+    },
+    {
+      "column": "ITRON_GROUP_ID",
+      "type": "VARCHAR2(25)",
+      "description": "The meter route number."
+    },
+    {
+      "column": "ITRON_GROUP_TYPE",
+      "type": "VARCHAR2(100)",
+      "description": "Hard coded as 'ROUTE'"
+    },
+    {
+      "column": "ITRON_GROUP_NAME",
+      "type": "VARCHAR2(100)",
+      "description": "The meter route number. None. None. Mandatory. Mandatory."
+    },
+    {
+      "column": "TDG_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory."
+    },
+    {
+      "column": "TDG_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> Page:"
+    }
+  ],
+  "UB_LOCATION_TYPES": [
+    {
+      "column": "LOCATION_TYPE_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Primary invisible unique identifier for location type record. Mandatory."
+    },
+    {
+      "column": "LOCATION_TYPE",
+      "type": "VARCHAR2(15)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Use this to categorise the types of locations meters can installed at.  Examples : PIT SET, BOX, IN HOUSE. None."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_MEASURES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Page: 174 System: UTILITY"
+    }
+  ],
+  "UB_MESSAGES": [
+    {
+      "column": "DEEMED_VACANT_FLAG",
+      "type": "NUMBER()",
+      "description": "Used by Vacancy Tax when the deemed vacant flag is checked. None Page: 176 System: UTILITY"
+    },
+    {
+      "column": "DETERMINED_VACANT_FL",
+      "type": "NUMBER()",
+      "description": "Used by Vacancy Tax when the determined vacant flag is checked. None System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "NOT_VACANT_FLAG",
+      "type": "NUMBER()",
+      "description": "Used by Vacancy Tax when the none of the above flag (basically not vacant) is checked. None System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_METER_BRANDS": [
+    {
+      "column": "METER_BRAND_ID",
+      "type": "VARCHAR2(36)",
+      "description": "A unique id for each meter brand. Cannot be null.  Must be unique. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "METER_BRAND",
+      "type": "VARCHAR2(20)",
+      "description": "Brand or manufacturer of meter. Cannot be null.  Must be unique. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be null. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be null. Taken from the Database Login userid.  System entered. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_METER_MODELS": [
+    {
+      "column": "METER_MODEL_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Unique Id for each meter model. Cannot be null.  Must be unique. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "METER_BRAND",
+      "type": "VARCHAR2(20)",
+      "description": "Id for meter brand - from ub_meter_brands table. Cannot be null. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "METER_MODEL",
+      "type": "VARCHAR2(30)",
+      "description": "Meter model number/description. Cannot be null.  Must be unique within meter brand. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "METER_TYPE",
+      "type": "VARCHAR2(20)",
+      "description": "The default meter type for this model (eg: turbine, etc.). Optional. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be null. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be null. Taken from the Database Login userid.  System entered. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_METER_READ_METHODS": [
+    {
+      "column": "READ_METHOD_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Primary invisible unique identifier for read method record. Mandatory."
+    },
+    {
+      "column": "READ_METHOD",
+      "type": "VARCHAR2(20)",
+      "description": "Examples:"
+    },
+    {
+      "column": "TOUCH",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "RADIO",
+      "type": "VARCHAR2(20)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This code translates the clients reading method to what the hand held reading device is expecting to receive (eg: for Schlumberger, a radio hand held device needs to be sent to the gun as a Z). None."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_METER_READING_SUBS": [
+    {
+      "column": "EMAIL_TEMPLATE_TYPE_I",
+      "type": "VARCHAR2(36)",
+      "description": "This is the ID of the email template type this email is going to use. None"
+    },
+    {
+      "column": "TEMPEST_EMAIL_TEMPLATE_TY",
+      "type": "VARCHAR2(36)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> The new email id when resending an email. The email_id column should be updated to this email at the end of the resend process and this column should then be cleared. None"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System Generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Taken from the Database Login userid. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    }
+  ],
+  "UB_METER_SIZES": [
+    {
+      "column": "METER_SIZE_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Primary invisible unique identifier for meter size record. Mandatory."
+    },
+    {
+      "column": "METER_SIZE",
+      "type": "VARCHAR2(10)",
+      "description": "Size of the meter.  This list is used for selection purposes. None. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_METER_TYPES": [
+    {
+      "column": "METER_TYPE",
+      "type": "VARCHAR2(20)",
+      "description": "None. Examples:"
+    },
+    {
+      "column": "TOUCH",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "RADIO",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "VISUAL",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "PHONE",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_METERS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Taken from the Database Login userid.  System entered."
+    },
+    {
+      "column": "READ_METHOD",
+      "type": "VARCHAR2(20)",
+      "description": "<ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> This is method used for reading this meter. Example: VISUAL, TOUCH, and RADIO.  Clients can define their own list in the UB_METER_READ_METHODS table.  Not used for processing."
+    },
+    {
+      "column": "INVENTORY_STATUS",
+      "type": "VARCHAR2(10)",
+      "description": "The inventory status of the meter. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Must exist on UB_METER_READ_METHODS. User selected."
+    }
+  ],
+  "UB_NEPTUNE_LEAK_BATCHES": [
+    {
+      "column": "SESSION_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Session ID from ub_neptune_potential_leaks table Mandatory"
+    },
+    {
+      "column": "UB_NEPTUNE_POTENTIAL_LEAK",
+      "type": "NUMBER()",
+      "description": "The batch number. Mandatory System Generated <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "BATCH_DATE",
+      "type": "DATE()",
+      "description": "The date the batch was created. Mandatory System Generated <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "COMPLETED_DATE",
+      "type": "DATE()",
+      "description": "The date time that the batch was completed on. Mandatory System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System Generated <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Taken from the Database Login userid. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    }
+  ],
+  "UB_NEPTUNE_LEAK_EMAIL_LOG": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_NEPTUNE_POTENTIAL_LEAKS": [
+    {
+      "column": "EMAIL_NOT_REQUIRED_R",
+      "type": "VARCHAR2(250)",
+      "description": "The reason why an email is not required to be sent for this meter. None. Page: 195 System: UTILITY"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date this record is created on. Mandatory System Maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the logon user id who created this record. Mandatory System Maintained <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System Generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory Taken from the Database Login userid. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    }
+  ],
+  "UB_OSBAL_WORK": [
+    {
+      "column": "SESSION_ID",
+      "type": "VARCHAR2(26)",
+      "description": "This is the session id for the current print session None."
+    },
+    {
+      "column": "ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "See ub_transactions.account_number for detail. None."
+    },
+    {
+      "column": "CUSTOMER_ID",
+      "type": "VARCHAR2(26)",
+      "description": "See ub_transactions.customer_id for detail None."
+    },
+    {
+      "column": "BALANCE",
+      "type": "NUMBER()",
+      "description": "This is the total balance of the account. None."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the date/time the report is being printed. None."
+    }
+  ],
+  "UB_PARAMETERS": [
+    {
+      "column": "VT_FILING_FEE_PERCENT",
+      "type": "NUMBER()",
+      "description": "The amount of percent to use to calculate the amount for the filing fee. This should be stored in decimal format (i.e. 0.05 is 5%, this is the default value). None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "VT_LATE_DEC_START_DA",
+      "type": "NUMBER()",
+      "description": "The business day of a given month to act as the starting day to allow additional late declarations None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "VT_LATE_DEC_START_M",
+      "type": "NUMBER()",
+      "description": "The month to act as the starting month to allow additional late declarations (number from 1 - 12) None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "VT_LATE_DEC_START_AG",
+      "type": "NUMBER()",
+      "description": "The amount of years an additional late declaration is allowed to be started on. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Page:"
+    }
+  ],
+  "UB_PAYMENTS_WORK": [
+    {
+      "column": "PAYMENT_AMOUNT",
+      "type": "NUMBER()",
+      "description": "This is the amount of the payment being made. It should be a negative number to represent a payment. None."
+    },
+    {
+      "column": "PAYMENT_DATE",
+      "type": "DATE()",
+      "description": "The date the payment was made on None."
+    },
+    {
+      "column": "DISCOUNT_DATE",
+      "type": "DATE()",
+      "description": "Is used for the discount date in cases where it is not the same as the payment date. If you leave it blank then the payment date will be used as the discount date."
+    },
+    {
+      "column": "RECEIPT_NUMBER",
+      "type": "VARCHAR2(30)",
+      "description": "Is placed into the receipt field on the utility transaction."
+    },
+    {
+      "column": "NOTES",
+      "type": "VARCHAR2(250)",
+      "description": "Is placed into the notes field on the utility transaction. None. None. None."
+    },
+    {
+      "column": "REFERENCE",
+      "type": "VARCHAR2(40)",
+      "description": "This should be the name of the transaction for the type and sub type of the payment you are importing. None."
+    },
+    {
+      "column": "TYPE",
+      "type": "VARCHAR2(4)",
+      "description": "Is placed into the reference field on the utility transaction. Should be PYMT for a Payment - then leave the sub type blank or ADJ for a payment adjustment, then the sub type must be a valid payment adjustment type. None"
+    },
+    {
+      "column": "SUB_TYPE",
+      "type": "VARCHAR2(4)",
+      "description": "When the type is ADJ then this sub type must be a valid payment adjustment type None."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Note used."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "Not used. None none. Page: 209"
+    }
+  ],
+  "UB_PENALTY_WORK": [
+    {
+      "column": "LINE_ITEM_PERCENT",
+      "type": "NUMBER()",
+      "description": "This is the second parameter Penalty Percent user select when running a penalty process. None. Page: 211 System: UTILITY"
+    },
+    {
+      "column": "BILL_BALANCE",
+      "type": "NUMBER()",
+      "description": "Two possible values None. System Maintained. - For each account, this is the total balance for all the bills that pasted due.  This type of row doesn't have LEVY_DETAL_CODE and is called a bill header row."
+    }
+  ],
+  "UB_PERIODS": [
+    {
+      "column": "PENDING_REREADS",
+      "type": "NUMBER()",
+      "description": "None. This is the number of meter readings (for meters attached to locations within this route) that have been marked as requiring rereading.  When a reading is marked for reread this must be incremented, when the rereading comes in from the meter gun (or the mark is removed) then decrement this number.  This must be zero in order for a route of readings to be approved."
+    },
+    {
+      "column": "STATUS",
+      "type": "VARCHAR2(30)",
+      "description": "Indicates in a comment manner what is currently happening with this route of readings (for the current year and period being read). Values:"
+    },
+    {
+      "column": "AVAILABLE",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the date that the reading is expected to take palce.  This helps with PAWs estimates as it can be more accurate when guessing what date the reading will take place. This is a required field if using UB Installment."
+    }
+  ],
+  "UB_PERSON_TYPES": [
+    {
+      "column": "PERSON_TYPE_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Unique Id for each person type. Cannot be null."
+    },
+    {
+      "column": "PERSON_TYPE",
+      "type": "VARCHAR2(30)",
+      "description": "Unique Person Type for Utility Accounts. Must Be Unique. Cannot be null. User Entered <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DISPLAY_ORDER",
+      "type": "NUMBER()",
+      "description": "The order in which the people will be displayed on an account (Ie Owners First, then Tenant, then Strata) None User entered <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be null. System maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be null. Taken from the Database Login userid.  System entered. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_PROCESSING_ERRORS": [
+    {
+      "column": "BATCH_NUMBER",
+      "type": "NUMBER()",
+      "description": "The batch number assigned to this processing run. Mandatory"
+    },
+    {
+      "column": "RUN_TYPE",
+      "type": "VARCHAR2(1)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> The run type of the miscellaneous processing that caused the error or warning to occur. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "Utility account number that error/warning occured on. If the error/warning did not involve a particular utility account this field will be NULL. None. Page: 216"
+    },
+    {
+      "column": "BCTAX_BATCHES",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "ERROR_TYPE",
+      "type": "VARCHAR2(1)",
+      "description": "Flag that identifies this record as an error or warning message. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Possible values: E Error W Warning"
+    },
+    {
+      "column": "ERROR_DESC",
+      "type": "VARCHAR2(200)",
+      "description": "Description of the error or warning Mixed case. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_QBE_CONDITION_ATTRIBUTES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> \\\\big2\\sw\\Tempest\\T8Prod\\REPORTS\\TLRPT02.QRP"
+    }
+  ],
+  "UB_QBE_CONDITIONS": [
+    {
+      "column": "CONDITION_VALUE",
+      "type": "VARCHAR2(1000)",
+      "description": ""
+    },
+    {
+      "column": "CONDITION_VISIBLE",
+      "type": "VARCHAR2(1000)",
+      "description": ""
+    },
+    {
+      "column": "CONDITION_TAB",
+      "type": "VARCHAR2(30)",
+      "description": ""
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> <ANON_RULE>DO NOTHING</ANON_RULE>"
+    }
+  ],
+  "UB_QRP_MARGINS": [
+    {
+      "column": "RIGHT_MARGIN",
+      "type": "NUMBER()",
+      "description": "This is the margin the user wants to use. None Page: 224 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date and time this row of data was last changed. Nuo null System Maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "User who last changed this row of data. Nuo null System Maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_RATES": [
+    {
+      "column": "BASE_AMOUNT",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "AMOUNT_PER_STEP",
+      "type": "NUMBER()",
+      "description": "This is the base amount for this charge.  For flat rate charges, this is the only amount.  For metered charges, the base is added to the computed step amount. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "STEP_VALUE",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "TIER_DESC",
+      "type": "VARCHAR2(60)",
+      "description": "This is the incremental step amount to charge the Amount Per Step in. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_RATES_MASTER": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. Page: 229 System: UTILITY"
+    }
+  ],
+  "UB_READING_ADJUSTMENTS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. Page: 231 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_READING_CYCLE_PERIODS": [
+    {
+      "column": "CREATED_DATE",
+      "type": "DATE()",
+      "description": "The date the the reading cycle period was created. Mandatory Page: 233 System: UTILITY"
+    },
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "The user that created the reading cycle period. Mandatory System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date the the reading cycle period was last modified. Mandatory System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The user that last modified the reading cycle period. Mandatory System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_READING_CYCLE_ROUTES": [
+    {
+      "column": "END_YEAR",
+      "type": "NUMBER()",
+      "description": "The reading year that the route's association with the reading cycle ends. None. Page: 235 System: UTILITY"
+    },
+    {
+      "column": "END_PERIOD",
+      "type": "NUMBER()",
+      "description": "The reading period that the route's association with the reading cycle ends. None. User entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_USER",
+      "type": "VARCHAR2(26)",
+      "description": "The user who created the row. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE",
+      "type": "DATE()",
+      "description": "The date the row was created. Mandatory. System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The user who last update the row. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date the row was last updated. Mandatory. System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_READING_CYCLES": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The date the the reading cycle was last modified. Mandatory Page: 237 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The user that last modified the reading cycle period. Mandatory System entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_READING_ERRORS": [
+    {
+      "column": "ROUTE",
+      "type": "NUMBER()",
+      "description": "This is the route that is being approved."
+    },
+    {
+      "column": "ACCOUNT_NUMBER",
+      "type": "VARCHAR2(20)",
+      "description": "This is the customer account number the route belongs to."
+    },
+    {
+      "column": "ROUTE_SEQ",
+      "type": "NUMBER()",
+      "description": "This is the sequence order the customer is in a route. None. None. None."
+    },
+    {
+      "column": "METER_GROUPING",
+      "type": "VARCHAR2(1)",
+      "description": "This is a one character code indicating which group the customer's meter belongs to. None."
+    },
+    {
+      "column": "REGISTER_SERIAL",
+      "type": "VARCHAR2(30)",
+      "description": "This is the serial number of the register."
+    },
+    {
+      "column": "ERROR_TYPE",
+      "type": "VARCHAR2(10)",
+      "description": "Either ERROR or WARNING None. None."
+    },
+    {
+      "column": "ERROR_DESC",
+      "type": "VARCHAR2(100)",
+      "description": "This is the description of the error during approval. None."
+    },
+    {
+      "column": "READING_ID",
+      "type": "VARCHAR2(26)",
+      "description": "See ub_readings.reading_id fro detail. None. Page: 238 System: UTILITY"
+    }
+  ],
+  "UB_READING_EST": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "Userid of user who made the last update to this row of data. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> Taken from database login id. System Maintained."
+    }
+  ],
+  "UB_READING_MESSAGES": [
+    {
+      "column": "MESSAGE_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Unique id for each row. None."
+    },
+    {
+      "column": "MESSAGE",
+      "type": "VARCHAR2(254)",
+      "description": "Message text.  These messages can be added to meter readings. None. User entered. <ANON_RULE>NOTES</ANON_RULE> <ANON_PARAM1>0</ANON_PARAM1>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_READINGS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. Page: 248 System: UTILITY"
+    },
+    {
+      "column": "METER_DIRECTION",
+      "type": "NUMBER()",
+      "description": "<ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON> A meter can be installed as either Positive or Negative flow.  This field records the direction the meter is installed for a particular customer. <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "PULL_BILL_FLAG",
+      "type": "NUMBER()",
+      "description": "The user can select to have the bill \"Pulled\" during bill 0 or NULL is OFF = do not pull 1 is ON = pull bill. User selected <ANON_RULE>DO NOTHING</ANON_RULE>"
+    }
+  ],
+  "UB_READINGS_WORK": [
+    {
+      "column": "METER_GROUPING",
+      "type": "VARCHAR2(1)",
+      "description": "See UB_CUSTOMER_METERS.meter_grouping from detail."
+    },
+    {
+      "column": "READING_FOUND",
+      "type": "VARCHAR2(1)",
+      "description": "Either 0 or 1."
+    },
+    {
+      "column": "METER_STATUS",
+      "type": "VARCHAR2(3)",
+      "description": "See UB_CUSTOMER_METERS.meter_status for detail. None. None. None."
+    },
+    {
+      "column": "MISC_DETAILS",
+      "type": "VARCHAR2(100)",
+      "description": "See ub_customers.account_desc for detail. None."
+    },
+    {
+      "column": "METER_DIRECTION",
+      "type": "NUMBER()",
+      "description": "See ub_customer_meters.meter_direction for detail. None."
+    },
+    {
+      "column": "LST_PRD_DAY_CONS",
+      "type": "NUMBER()",
+      "description": "This is the prior period consumption in the selected view method. None."
+    },
+    {
+      "column": "LST_YR_DAY_CONS",
+      "type": "NUMBER()",
+      "description": "This is the prior year consumption in the selected view method."
+    },
+    {
+      "column": "PREV_READING_ID",
+      "type": "VARCHAR2(26)",
+      "description": "This is the reading_id of the previous reading for each customer, meter on this route. None. None."
+    },
+    {
+      "column": "PRIOR_PERIOD_VAR",
+      "type": "NUMBER()",
+      "description": "This is the current variance from prior period. None."
+    },
+    {
+      "column": "PRIOR_YEAR_VAR",
+      "type": "NUMBER()",
+      "description": "This is the current variance from prior year."
+    },
+    {
+      "column": "PULL_BILL_FLAG",
+      "type": "NUMBER()",
+      "description": "See ub_readings.pull_bill_flag for detail. None. None."
+    },
+    {
+      "column": "MIU_ID",
+      "type": "VARCHAR2(30)",
+      "description": "From UB_METERS.MIU_ID.  See UB_METERS for full description. None. System Maintained.  From UB_CUSTOMER_METERS table. System Maintained."
+    },
+    {
+      "column": "APPROVE_SESSION_ID",
+      "type": "VARCHAR2(36)",
+      "description": "This is a 36 bytes ID used by the approval process. When a user clicks the approve button, depending on where the button is located (the main reading window or the edit route window), a session ID is assigned to readings that are selected.  The reading approval process approves readings that have the session id assigned. None."
+    }
+  ],
+  "UB_REC_CODES": [
+    {
+      "column": "PYMT_DETAIL_CODE",
+      "type": "VARCHAR2(3)",
+      "description": "This is a code the user assigns to this receivable area.  This short code is stored on tables in place of the longer description to save space on larger tables such as the transaction table. Must be unique."
+    },
+    {
+      "column": "REC_AREA",
+      "type": "VARCHAR2(40)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is a description of the receivable area.  This description is used on all reports in place of the code that is stored on tables.  Your GL posting reports will group transactions and show subtotals for these descriptions."
+    },
+    {
+      "column": "BRANDING",
+      "type": "VARCHAR2(40)",
+      "description": "Used to identify the brand for each receivable code. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> Only possible values are: - UTILITY - VACANCY TAX"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_RELATIONS": [
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(30)",
+      "description": "Userid of last user to modify this record. None. Page: 255 System: UTILITY"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "System date for the last time this record was modified. None. System Maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_REMINDER_CAT_PARAMS": [
+    {
+      "column": "REMINDER_CAT_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Unique generated ID for this reminder cat parameters <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "REMINDER_PARM_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Reminder parameter that contains these categories. Mandatory. Muse existed in the ub_reminder_param table System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CATEGORY_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Category Id of a utility route category. Mandatory. Must existed in the ub_route_categories table System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_REMINDER_PARAMS": [
+    {
+      "column": "BILL_EBILL_LAYOUT_FILE",
+      "type": "VARCHAR2(30)",
+      "description": "This is the custom qrp file name user entered.  The qrp will be used when generating the source file for eBilling. None. Page: 261"
+    },
+    {
+      "column": "BILL_EBILL_EMAIL_TEMPL",
+      "type": "VARCHAR2(36)",
+      "description": "This is the email template id user selected to be used as the default for this reminder templates Must exist in UB_EMAIL_TEMPLATES From UB_EMAIL_TEMPLATES"
+    },
+    {
+      "column": "BILL_EBILL_PREPRINTED_",
+      "type": "VARCHAR2(36)",
+      "description": ""
+    },
+    {
+      "column": "BILL_EBILL_BACK_PAGE",
+      "type": "VARCHAR2(36)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the pre-printed form doc/image id user selected to be used as the default this reminder template <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System Generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "Indicates whether or not a reminder is sent to the owner of a closed account.  Used by the Reminder Print by Batch print option only. Mandatory. Taken from the Database Login userid."
+    }
+  ],
+  "UB_REV_CODES": [
+    {
+      "column": "LEVY_TYPE",
+      "type": "VARCHAR2(4)",
+      "description": "Tells the system is this is a normal revenue area of one that will be used generating penalties on overdue charges. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> LEVY - normal revenue area.  You may assign this area to your service charges."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_ROUTE_CATEGORIES": [
+    {
+      "column": "COPY_OWNER_FLAG",
+      "type": "NUMBER()",
+      "description": "This flag indicates if a copy of the bill should be mailed to the owner if the account is in arrears. 1 = yes send owner a copy 0 = no do not send the owner a copy."
+    },
+    {
+      "column": "WEB_APPLICATION_URL",
+      "type": "VARCHAR2(250)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> The url to the corresponding web application for this route category. Currently this is only used for the Vacancy Tax web application. None."
+    },
+    {
+      "column": "PYMT_DETAIL_CODE",
+      "type": "VARCHAR2(3)",
+      "description": "The credit fund receivable code from ub_rec_codes table for the category. None."
+    },
+    {
+      "column": "UB_REC_CODES",
+      "type": "VARCHAR2(26)",
+      "description": "The unique key from ub_service_control table. Used to determine which service charge is used for the paper bill charges. Must exist in the ub_service_control table. ub_service_control.levy_id <ANON_RULE>DO NOTHING</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date and time of last change to this row of data. None. System maintained <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "UserId of the last person to change this data None. System generated <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_ROUTE_METERS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date the the route meter association was last modified. Mandatory. Page: 286 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "The user that last modified the route meter association. Mandatory. System entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_ROUTES": [
+    {
+      "column": "ROUTE",
+      "type": "NUMBER()",
+      "description": "This number for this route.  Routes are usually numbered by 5's or 10's so that new routes may be added in the future so that no single route becomes to large (contains to many locations). None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_SERVICE_BILLING_CONS": [
+    {
+      "column": "PRORATE_BILL_PERIOD",
+      "type": "NUMBER()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. System generated."
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who created this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be NULL. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be NULL. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_SERVICE_CONTROL": [
+    {
+      "column": "DEBIT_CREDIT_FLAG",
+      "type": "VARCHAR2(6)",
+      "description": "This flag defines if the charge is to ALWAYS be a DEBIT (this would be a normal charge) or CREDIT (this would be used for charges like Waivers or Special rebates). If a charge is flagged as a DEBIT then you CANNOT enter a credit amount (this can only occur by reversing an existing debit charge).  NOTE - an INTERIM charge could also be entered as a CREDIT."
+    },
+    {
+      "column": "DEBIT",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "CREDIT",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "DEFAULT_AMOUNT",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "EXCLUDE_FROM_FINAL_B",
+      "type": "NUMBER()",
+      "description": "For miscellaneous type charges a default amount may be defined.  For all other charges this field should be NULL. None. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_SERVICE_ROUTE_CATEGORIES": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Page: 297 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ],
+  "UB_SERVICE_SOURCE_PERIODS": [
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. Page: 299 System: UTILITY"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who created this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Cannot be NULL. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Cannot be NULL. User Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_SERVICES": [
+    {
+      "column": "NUMBER_OF_UNITS",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "METER_GROUPING",
+      "type": "VARCHAR2(10)",
+      "description": "This is the number of units of the charge to be applied once the charge has been calculated.  If NULL use 1 unit.  For split location duplex type accounts you would use a units value of  0.5 for each customer to cause the charge to be split between the two customers. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date and time of last modification. None. System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "Userid of the last user to update this record. None. System maintained. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_SESSION_NUMBER": [
+    {
+      "column": "UB_SESSION_ID",
+      "type": "VARCHAR2(26)",
+      "description": "Unique Id. Must be ' EC-SESSION-NO'. Mandatory."
+    },
+    {
+      "column": "UB_SESSION_NUMBER",
+      "type": "NUMBER()",
+      "description": "This is the number of the last session number used by the system. None System maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the user id of the person who last changed this record. Mandatory. Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_TRANSACTION_DETAILS": [
+    {
+      "column": "COUNTRY_CODE",
+      "type": "VARCHAR2(4)",
+      "description": "Country that the address belongs to for this transaction. The address is currently used on refund type transactions to record the address of the people a refund cheque is to be mailed to. Identified the country that the postal code is for. CAN is for Canadian postal code, US is for 5 digit or 5:4 digit zip code and INTL means the address is international and the postal code is NULL."
+    },
+    {
+      "column": "CAN",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "INTL",
+      "type": "",
+      "description": ""
+    },
+    {
+      "column": "AP_VENDOR_NUMBER_ID",
+      "type": "VARCHAR2(36)",
+      "description": "This is the AP Vendor Number id of the vendor. Currently this is used only for refund type transaction. Optional. From table GL_AP_VENDOR_NUMBER."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_TRANSACTION_ERRORS": [
+    {
+      "column": "ERROR_DESC",
+      "type": "VARCHAR2(250)",
+      "description": "This is the description of the error. None. Page: 309 System: UTILITY"
+    },
+    {
+      "column": "ERROR_SOURCE",
+      "type": "VARCHAR2(60)",
+      "description": "This is the name of the program that generated the error. None System Maintained"
+    },
+    {
+      "column": "SORT_ORDER",
+      "type": "NUMBER()",
+      "description": "Note: if this is null then it means that it was run by an older job process. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the order the errors being displayed on the screen.  This column is used only by the UB PYMT program."
+    }
+  ],
+  "UB_TRANSACTION_RATES": [
+    {
+      "column": "PRORATE_FACTOR",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "UNIT_CONS_FACTOR",
+      "type": "NUMBER()",
+      "description": ""
+    },
+    {
+      "column": "COVERS_FROM",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "COVERS_TO",
+      "type": "DATE()",
+      "description": ""
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> <ANON_RULE>DO NOTHING</ANON_RULE>"
+    }
+  ],
+  "UB_TRANSACTIONS": [
+    {
+      "column": "AP_INSTRUCTION_CODE_",
+      "type": "VARCHAR2(36)",
+      "description": "This is the id of the AP Instruction Code used by SAP to identify cheques that are not to be mailed out automatically. Optional. From table GL_AP_INSTRUCTION_CODES."
+    },
+    {
+      "column": "AP_TEXT",
+      "type": "VARCHAR2(50)",
+      "description": "This is the information user entered regarding to the current AP transaction. Optional. User Entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. Must be the same for all records with the same master_trans_id. System generated."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the userid of the person who last changed this record. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_UNAPPROVED_BILL_ITEMS": [
+    {
+      "column": "ITEM_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Possible values: None. Page: 323 System: UTILITY"
+    },
+    {
+      "column": "PREV_ITEM_DATE",
+      "type": "DATE()",
+      "description": "Possible values: None. User Entered. READING - NULL TRANS - NULL SERVICE - Service restart date. BILL - NULL"
+    },
+    {
+      "column": "GENERATED_FLAG",
+      "type": "VARCHAR2(1)",
+      "description": "This flag indicates whether or this record is generated by this billing run. None. User Entered. Possible values: READING - NULL"
+    }
+  ],
+  "UB_VT_DECLARATION_DATA_ITEMS": [
+    {
+      "column": "CANCELLED_DECLARATIO",
+      "type": "VARCHAR2(36)",
+      "description": "This flag is used to identify whether the data item was connected to a declaration that was canceled. Canceling a declaration can happen in two ways: 1. The Cancel Declaration button was selected, causing the completed Declaration to be canceled and the status set back to PENDING. 2. The Declaration No Longer Required button was selected, causing the completed Declaration to be set to N/A - DECLARATION NO LONGER REQUIRED."
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Upper. Login userid."
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Upper."
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. Login userid. System generated."
+    }
+  ],
+  "UB_VT_DECLARATION_DOCS": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "The date the record was last updated. Mandatory. Page: 327 System: UTILITY"
+    }
+  ],
+  "UB_VT_DECLARATION_LOG": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the userid of the person who created this record. Mandatory. Upper."
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the system date and time that this record was created. Mandatory. Page: 329 System: UTILITY"
+    }
+  ],
+  "UB_VT_DECLARATION_NUMBER": [
+    {
+      "column": "VT_DECLARATION_NUMB",
+      "type": "VARCHAR2(36)",
+      "description": "Unique Key Must be 'VT-DECLARATION-NUMBER'. None."
+    },
+    {
+      "column": "VT_DECLARATION_NUMB",
+      "type": "NUMBER()",
+      "description": "The last declaration number for Vacancy Tax Declarations. None. System Generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None. System Entered. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None. System Entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_VT_DECLARATION_TYPES": [
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. Page: 332 System: UTILITY"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. Login userid. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_VT_DECLARATIONS": [
+    {
+      "column": "FILING_FEE_CC_TRANS_I",
+      "type": "VARCHAR2(26)",
+      "description": ""
+    },
+    {
+      "column": "FILING_FEE_CC_TRANS_D",
+      "type": "VARCHAR2(15)",
+      "description": "This is the transaction_id of the filing fee misc item from cc_transactions. If this is not null (along with filing_fee_cc_trans_desc) then we can assume that the filing fee has been paid. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the description of the filing fee misc item from"
+    },
+    {
+      "column": "CREATED_USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who created this record. Mandatory. System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "CREATED_DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was created on. Mandatory. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory. System generated. <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_VT_EBILL_PROPERTIES": [
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date and time of last change to this row of data. None. Page: 351 System: UTILITY"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "UserId of the last person to change this data None. System generated <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_VT_SESSION": [
+    {
+      "column": "VT_SESSION_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Unique id to identify this record.  This id is also used to create the hash code explained in the table description. Mandatory"
+    },
+    {
+      "column": "WEB_SESSION_NO",
+      "type": "NUMBER()",
+      "description": "The session number that this EHT session belongs to.  This is created from the UB_SESSION_NUMBER table. Mandatory"
+    },
+    {
+      "column": "FOLIO",
+      "type": "VARCHAR2(16)",
+      "description": "The folio number for the property the EHT declaration.  This is entered by the user when logging in. Mandatory User entered"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. Mandatory"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. Mandatory System maintained System maintained \\\\big2\\sw\\Tempest\\T8Prod\\REPORTS\\TLRPT02.QRP"
+    }
+  ],
+  "UB_WORKFLOW": [
+    {
+      "column": "COMPLETED_DATE",
+      "type": "DATE()",
+      "description": "The date the workflow was completed. Valid Date System generated or user entered. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "BATCH_TYPE",
+      "type": "VARCHAR2(10)",
+      "description": "batch type None. System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "BATCH_NUMBER",
+      "type": "NUMBER()",
+      "description": "The number of the batch that this transaction was created in. None. System generated."
+    },
+    {
+      "column": "ARCHIVE_FILE_NAME",
+      "type": "VARCHAR2(200)",
+      "description": "<ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON> This is the name of the archive file.  It does NOT include the path just the file name.  To get a full file name use the archive log directory stored on the bl_parameters table."
+    },
+    {
+      "column": "SESSION_ID",
+      "type": "VARCHAR2(36)",
+      "description": "Session id of a bill print Not Null System Generated <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "Date and time that this row was added to the table. None. System Generated <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "Logon id of the user that entered this data or caused this event to be generated. None. System generated <ANON_RULE>USER STAMP</ANON_RULE> </TDG_ANON>"
+    }
+  ],
+  "UB_YEARS": [
+    {
+      "column": "BILL_YEAR",
+      "type": "NUMBER()",
+      "description": "A year. None. Tempest of client MIS department maintained. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "DATE_STAMP",
+      "type": "DATE()",
+      "description": "This is the system date and time that this record was last changed on. None System generated. <ANON_RULE>DO NOTHING</ANON_RULE> </TDG_ANON>"
+    },
+    {
+      "column": "USER_STAMP",
+      "type": "VARCHAR2(26)",
+      "description": "This is the userid of the person who last changed this record. None Taken from the Database Login userid. <ANON_RULE>USER STAMP</ANON_RULE>"
+    }
+  ]
+}
