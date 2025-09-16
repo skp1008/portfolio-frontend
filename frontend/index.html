@@ -1336,6 +1336,7 @@
         <a href="#about">About</a>
         <div class="dropdown-content">
           <a href="#education">Education</a>
+          <a href="#projects">Projects</a>
           <a href="#work">Work Experience</a>
           <a href="#certifications">Certificates</a>
           <a href="#skills">Skills</a>
@@ -1373,7 +1374,7 @@
         <span class="waving-hand">👋</span>
       </h1>
       <p class="summary">
-        I'm an Economics and Data Science student at the University of British Columbia who loves to solve real-world problems with AI, ML, data analysis, and statistical modeling. I build tools that actually get used - by cities, by people, and soon, by you.
+        Hi! I'm Krishna, an Economics student at the University of British Columbia (UBC) specializing in Econometrics and Data Science. I have experience in Python, SQL, R, and STATA for statistical analysis, research, and data-driven projects. I've also built models for financial forecasting, anomaly detection, and predictive analytics, and my main interests are in financial analysis and machine learning.
       </p>
       <div class="social-buttons" style="margin-top: 40px; justify-content: flex-start; max-width: 420px; margin-left: 0;">
         <a href="https://www.linkedin.com/in/krishna-paudel-4705a3262/" class="social-button linkedin" target="_blank" rel="noopener noreferrer">
@@ -1388,7 +1389,7 @@
         <a href="/contact" class="social-button gmail">
           <img src="/frontend/gmail.png" alt="Gmail">
         </a>
-        <a href="/frontend/Krishna Paudel Resume Aug 2025.pdf" class="social-button cv" target="_blank" rel="noopener noreferrer">
+        <a href="/frontend/MAIN Krishna Paudel Resume Sep 2025.pdf" class="social-button cv" target="_blank" rel="noopener noreferrer">
           <img src="/frontend/CV.png" alt="CV">
         </a>
       </div>
@@ -1449,6 +1450,54 @@
               <p class="education-detail">One of 15 students selected for program <span class="education-emoji">🎓</span></p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div class="work-section" id="projects">
+    <div class="section-header">
+      <div class="section-subtitle">WHAT I HAVE BUILT</div>
+      <h2 class="section-title">Projects.</h2>
+    </div>
+    
+    <div class="work-container">
+      <div class="work-jobs">
+        <div class="job-card" data-job="software">
+          <div class="job-icon">
+            <img src="/frontend/delta.png" alt="City of Delta" style="border-radius: 50%; object-fit: cover; width: 100%; height: 100%;">
+          </div>
+          <div class="job-info">
+            <h3>Software Solutions</h3>
+            <p>City of Delta</p>
+          </div>
+        </div>
+        
+        <div class="job-card" data-job="boc">
+          <div class="job-icon">
+            <img src="/frontend/boc.png" alt="Bank of Canada" style="border-radius: 50%; object-fit: cover; width: 100%; height: 100%;">
+          </div>
+          <div class="job-info">
+            <h3>BOC Governor's Challenge</h3>
+            <p>Bank of Canada</p>
+          </div>
+        </div>
+
+        <div class="job-card" data-job="thesis">
+          <div class="job-icon">
+            <img src="/frontend/ubc.png" alt="University of British Columbia" style="border-radius: 50%; object-fit: cover; width: 100%; height: 100%;">
+          </div>
+          <div class="job-info">
+            <h3>Undergraduate Thesis</h3>
+            <p>University of British Columbia</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="work-details" id="projectDetails">
+        <div class="work-placeholder">
+          Select a project to view details
         </div>
       </div>
     </div>
@@ -1700,6 +1749,40 @@
     const jobCards = document.querySelectorAll('.job-card');
     const workDetails = document.getElementById('workDetails');
 
+    // Project data
+    const projectData = {
+      software: {
+        title: 'Software Solutions',
+        company: 'City of Delta - Delta, BC',
+        dates: 'MAY 2025 - AUG 2025',
+        details: [
+          'Developed a LLaMA 3-powered ML platform that converts natural language into precise SQL queries by training on historical query logs and custom metadata, significantly increasing operational efficiency and query accessibility for non-technical municipal staff.',
+          'Created a fully automated form processing tool that utilizes OCR technology to extract handwritten data from over 500 monthly submissions and cross-references entries against city databases using a fuzzy matching search engine, cutting processing time by over 90%',
+          'Built a hybrid ML model for time-series anomaly detection that integrates supervised and unsupervised learning methods to flag potential water leaks from monthly meter consumption data across city properties, reducing manual review workload by over 70%.'
+        ]
+      },
+      boc: {
+        title: 'Inflation Forecasting Model',
+        company: 'Bank of Canada - Ottawa, ON',
+        dates: 'MAY 2025 - AUG 2025',
+        details: [
+          'Developed a comprehensive macroeconomic model to forecast CPI inflation predictions and recommend optimal interest rate trajectories to the Bank of Canada\'s Governing Council under diverse macroeconomic scenarios.',
+          'Implemented Bayesian Vector Autoregression model with Minnesota priors using 9 macroeconomic variables, incorporating stationarity testing, seasonal adjustment, and posterior sampling with 2,000 draws to quantify forecast uncertainty through fan charts.',
+          'Quantified Bank of Canada\'s policy objectives of stable, low, and predictable inflation into mathematical optimization formula, testing thousands of different policy rate paths via Monte Carlo simulations to identify optimal interest rate trajectory with successful shock simulation capabilities for external economic disruptions.'
+        ]
+      },
+      thesis: {
+        title: 'Undergraduate Thesis',
+        company: 'University of British Columbia - Vancouver, BC',
+        dates: 'JAN 2025 - APRIL 2025',
+        details: [
+          'Investigated British Columbia\'s 2008 carbon tax impact on renewable energy transition by analyzing wind power development patterns, addressing policy questions on carbon pricing effectiveness in stimulating green energy investments amid climate change mitigation efforts',
+          'Applied Difference-in-Differences methodology using Canada\'s Wind Turbine Dataset (2000-2018) to establish causal relationships between carbon taxation and wind energy investment, implementing province fixed effects, three-year lag structures, and multiple control group configurations to address parallel trends assumptions',
+          'Demonstrated that carbon tax implementation generated 552% greater increase in wind-generated electricity in British Columbia relative to control provinces, with stronger long-run effects when accounting for investment-to-output lag, providing evidence that carbon pricing mobilizes private capital toward renewable infrastructure'
+        ]
+      }
+    };
+
     const jobData = {
       delta: {
         title: 'Finance Intern',
@@ -1714,7 +1797,7 @@
       ra: {
         title: 'Research Assistant',
         company: 'Department of Political Science, University of British Columbia - Vancouver, BC',
-        dates: 'JUN 2025 - PRESENT',
+        dates: 'MAY 2025 - SEP 2025',
         details: [
           'Scraped, compiled, and cleaned large-scale datasets from congressional archives, public statements, and demographic sources to examine the relationship between U.S. congressmembers\' religious affiliations and their policy outcomes.',
           'Performed statistical inferencing analysis using R and STATA, running panel regression models and conducting hypothesis testing to identify long-term patterns in legislative voting behavior to produce insights for an academic publication on religion and politics.'
@@ -1730,6 +1813,47 @@
         ]
       }
     };
+
+    // Project interaction
+    const projectCards = document.querySelectorAll('#projects .job-card');
+    const projectDetails = document.getElementById('projectDetails');
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', function() {
+        // Remove active class from all project cards
+        projectCards.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked card
+        this.classList.add('active');
+        
+        // Get project data
+        const projectType = this.getAttribute('data-job');
+        const project = projectData[projectType];
+        
+        // Create View Project button HTML
+        let viewProjectButton = '';
+        if (projectType === 'software') {
+          viewProjectButton = '<a href="https://www.krishnapaudel.ca/projects" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 15px; padding: 8px 16px; background: linear-gradient(135deg, #0066cc, #004499); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; width: auto;">View Project</a>';
+        } else if (projectType === 'boc') {
+          viewProjectButton = '<a href="https://github.com/skp1008/BOC-Inflation-Forecasting" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 15px; padding: 8px 16px; background: linear-gradient(135deg, #0066cc, #004499); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; width: auto;">View Project</a>';
+        } else if (projectType === 'thesis') {
+          viewProjectButton = '<a href="https://github.com/skp1008/Carbon-Tax-Impact-on-Energy-Investments" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 15px; padding: 8px 16px; background: linear-gradient(135deg, #0066cc, #004499); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; width: auto;">View Project</a>';
+        }
+        
+        // Update project details
+        projectDetails.innerHTML = `
+          <h2>${project.title}</h2>
+          <h3>${project.company}</h3>
+          <div class="dates">${project.dates}</div>
+          <ul>
+            ${project.details.map(detail => `<li>${detail}</li>`).join('')}
+          </ul>
+          <div style="text-align: left;">
+            ${viewProjectButton}
+          </div>
+        `;
+      });
+    });
 
     jobCards.forEach(card => {
       card.addEventListener('click', function() {
@@ -1755,9 +1879,16 @@
       });
     });
 
-    // Set City of Delta as default on page load
+    // Set default selections on page load
     window.addEventListener('load', function() {
-      const deltaCard = document.querySelector('[data-job="delta"]');
+      // Set Software Solutions as default for projects
+      const softwareCard = document.querySelector('#projects [data-job="software"]');
+      if (softwareCard) {
+        softwareCard.click();
+      }
+      
+      // Set City of Delta as default for work experience
+      const deltaCard = document.querySelector('#work [data-job="delta"]');
       if (deltaCard) {
         deltaCard.click();
       }
