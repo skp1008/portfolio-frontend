@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Projects</title>
+  <title>Projects - Krishna Paudel</title>
   <link rel="icon" type="image/png" href="/frontend/logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%); color: #ffffff; overflow-x: hidden; position: relative; }
 
-    /* Horizontal Tech Background (copied from website2.html) */
+    /* Horizontal Tech Background */
     .tech-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
     .radar-line { position: absolute; background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.6), transparent); height: 1px; animation: radar-sweep 3s infinite linear; }
     .radar-line:nth-child(1) { top: 20%; width: 100%; animation-delay: 0s; }
@@ -29,7 +29,7 @@
     .radar-circle:nth-child(10) { top: 75%; right: 5%; width: 150px; height: 150px; animation-delay: 3s; }
     @keyframes radar-pulse { 0% { transform: scale(0.8); opacity: 0.3; border-color: rgba(0, 255, 255, 0.2);} 50% { transform: scale(1.1); opacity: 0.6; border-color: rgba(0, 255, 255, 0.4);} 100% { transform: scale(0.8); opacity: 0.3; border-color: rgba(0, 255, 255, 0.2);} }
 
-    /* Navigation (copied from website2.html) */
+    /* Navigation */
     .navigation { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 30px; z-index: 100; background: rgba(10, 10, 10, 0.1); backdrop-filter: blur(15px); padding: 12px 25px; border-radius: 50px; border: 1px solid rgba(0, 255, 255, 0.1); }
     .logo { height: 60px; width: auto; filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3)); transition: all 0.3s ease; object-fit: contain; object-position: center; cursor: pointer; }
     .logo:hover { filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5)); transform: scale(1.05); }
@@ -45,42 +45,65 @@
     .dropdown:hover .dropdown-content { display: block; }
     .dropdown.empty .dropdown-content { display: none !important; }
 
-    /* Page content */
-    .main-container { min-height: 100vh; max-width: 900px; margin: 0 auto; padding: 140px 20px 50px; }
+    /* Main Container */
+    .main-container { min-height: 100vh; max-width: 1600px; margin: 0 auto; padding: 140px 158px 80px; }
 
-    /* Title styled like tool pages */
-    .tool-title { font-family: 'Inter', sans-serif; font-size: 4rem; font-weight: 900; margin-bottom: 60px; color: #00ffff; text-align: center; letter-spacing: -1px; display: flex; align-items: center; justify-content: center; gap: 18px; }
-    .tech-emoji { font-size: 3.6rem; animation: tech-bounce 3s ease-in-out infinite; filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.35)); }
-    @keyframes tech-bounce { 0%,100%{transform:translateY(0) scale(1)} 25%{transform:translateY(-10px) scale(1.06)} 50%{transform:translateY(0) scale(1)} 75%{transform:translateY(-6px) scale(1.03)} }
+    /* Section Headers - matching Education section style */
+    .section-header { text-align: center; margin-bottom: 80px; margin-top: 120px; }
+    .section-header:first-child { margin-top: 0; }
+    .section-subtitle { font-size: 1rem; color: #888; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+    .section-title { font-size: 4rem; font-weight: 700; color: #ffffff; }
+    .section-sub-header { font-size: 1.5rem; color: #00ffff; font-weight: 600; margin-top: 10px; }
 
-    .projects-list { display: flex; flex-direction: column; gap: 40px; }
-    .project-item { text-align: left; background: none; }
-    .project-title { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 10px; letter-spacing: 0.2px; }
-    .project-num { color: #00eaff; font-weight: 900; margin-right: 8px; }
-    .section-label { font-family: 'Inter', sans-serif; font-weight: 800; color: #00eaff; margin: 10px 0 8px; letter-spacing: 0.3px; }
-    .bullet-list { list-style: none; margin: 0 0 10px 0; }
-    .bullet-list li { position: relative; padding-left: 18px; margin-bottom: 8px; color: #e8fbff; line-height: 1.6; }
-    .bullet-list li::before { content: '•'; position: absolute; left: 0; color: #00ffff; }
-    .project-desc { color: #e8fbff; line-height: 1.7; margin-bottom: 10px; }
-    .try-btn { display: inline-block; background: linear-gradient(135deg, #00c6fb, #005bea); color: white; text-decoration: none; font-weight: 700; padding: 10px 18px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,123,255,0.25); transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .try-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,123,255,0.35); }
-    .sep { height: 1px; background: rgba(0,255,255,0.15); margin: 14px 0 0 0; width: 100%; }
+    /* Projects Container */
+    .projects-container { position: relative; max-width: 1400px; margin: 0 auto; }
+    .projects-list { position: relative; display: flex; flex-direction: column; gap: 60px; }
 
-    /* Mobile tweaks */
+    /* Project Items */
+    .project-item { position: relative; display: flex; align-items: flex-start; gap: 40px; padding-left: 0; }
+    .project-content { flex: 1; background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)); backdrop-filter: blur(15px); border-radius: 20px; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.15); position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .project-content::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #00ffff, #0080ff, #ff6b35); transform: scaleX(0); transition: transform 0.4s ease; }
+    .project-content:hover::before { transform: scaleX(1); }
+    .project-content:hover { border-color: rgba(0, 255, 255, 0.4); transform: translateX(10px); }
+
+    .project-header { margin-bottom: 20px; }
+    .project-title { font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; line-height: 1.3; }
+    .project-company { font-size: 1.2rem; font-weight: 600; color: #00ffff; margin-bottom: 6px; }
+    .project-department { font-size: 1.2rem; font-weight: 600; color: #00ffff; margin-bottom: 6px; }
+    .project-dates { font-size: 1rem; color: #cccccc; margin-bottom: 15px; }
+
+    .project-details { display: flex; flex-direction: column; gap: 12px; }
+    .project-detail { font-size: 1rem; color: #e0e0e0; line-height: 1.5; padding-left: 20px; position: relative; }
+    .project-detail::before { content: '•'; position: absolute; left: 0; color: #00ffff; font-size: 1.2rem; }
+
+    .project-button { display: inline-block; background: linear-gradient(135deg, #0066cc, #004499); color: white; text-decoration: none; font-weight: 700; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; transition: transform 0.2s ease, box-shadow 0.2s ease; width: auto; margin-top: 15px; }
+    .project-button:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,102,204,0.35); }
+
+    .section-label { font-family: 'Inter', sans-serif; font-weight: 800; color: #00eaff; margin: 15px 0 8px; letter-spacing: 0.3px; font-size: 1rem; }
+
+    /* Mobile responsiveness */
+    @media (max-width: 1200px) {
+      .main-container { padding: 100px 40px 40px; }
+      .section-title { font-size: 3rem; }
+    }
+
     @media (max-width: 768px) {
       .navigation { top: 10px; gap: 8px; padding: 10px 14px; flex-wrap: wrap; max-width: calc(100% - 16px); justify-content: center; }
       nav { gap: 6px; }
       nav a { white-space: nowrap; font-size: 0.82rem; padding: 4px 8px; }
       .logo { height: 36px; }
-      .main-container { padding: 155px 16px 40px; }
-      .tool-title { font-size: 3rem; margin-bottom: 48px; }
-      .tech-emoji { font-size: 2.6rem; }
+      .main-container { padding: 155px 20px 40px; }
+      .section-title { font-size: 2.4rem; }
+      .project-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .project-content { padding: 25px; }
     }
+
     @media (max-width: 400px) {
       .navigation { top: 6px; gap: 4px; padding: 6px 10px; max-width: calc(100% - 12px); }
       nav a { font-size: 0.68rem; padding: 2px 5px; }
       .logo { height: 26px; }
       .main-container { padding: 170px 14px 28px; }
+      .section-title { font-size: 2rem; }
     }
   </style>
 </head>
@@ -107,6 +130,7 @@
         <a href="/">About</a>
         <div class="dropdown-content">
           <a href="/#education">Education</a>
+          <a href="/#projects">Projects</a>
           <a href="/#work">Work Experience</a>
           <a href="/#certifications">Certificates</a>
           <a href="/#skills">Skills</a>
@@ -136,98 +160,205 @@
 
   <!-- Content -->
   <div class="main-container">
-    <h1 class="tool-title"><span class="tech-emoji">💻</span> My Projects <span class="tech-emoji">💻</span></h1>
+    <!-- Independent Projects Section -->
+    <div class="section-header">
+      <div class="section-subtitle">WHAT I HAVE BUILT INDEPENDENTLY</div>
+      <h2 class="section-title">Independent Projects.</h2>
+      <div class="section-sub-header">UBC - Economics</div>
+    </div>
+    
+    <div class="projects-container">
     <div class="projects-list">
       <div class="project-item">
-        <div class="project-title"><span class="project-num">1)</span> OCR Processor for Meter Forms</div>
-        <div class="section-label">Problem</div>
-        <ul class="bullet-list">
-          <li>The Utilities Department at the City of Delta has to manually input account and meter serial numbers from multi‑page meter change‑out PDFs.</li>
-          <li>This process is time‑consuming and error‑prone, delaying billing updates.</li>
-        </ul>
-        <div class="section-label">Technical Solution</div>
-        <ul class="bullet-list">
-          <li>PDF processing pipeline: Splits multi-page PDFs using PyMuPDF, converts pages to high-resolution images using PIL/Pillow for optimal OCR accuracy.</li>
-          <li>Azure OCR integration: Leverages Microsoft's Azure Computer Vision API for enterprise-grade text extraction with 99%+ accuracy on structured forms.</li>
-          <li>Intelligent data extraction: Uses regex patterns and fuzzy string matching (rapidfuzz) to reliably capture account numbers and body serial numbers even with OCR variations.</li>
-          <li>Automated output generation: Compiles results into Excel with proper formatting, regenerates per-page PDFs named by serial number, and bundles everything into a single ZIP file for easy distribution.</li>
-        </ul>
-        <a class="try-btn" href="/meter-form-processor.html">Try Now →</a>
-        <div class="sep"></div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">BOC Governor's Challenge - Inflation Forecasting 🏦</h3>
+              <p class="project-company">Bank of Canada Competition</p>
+              <p class="project-dates">MAY 2025 - AUG 2025</p>
+            </div>
+            <div class="project-details">
+              <p class="project-detail">Developed a comprehensive macroeconomic model to forecast CPI inflation predictions and recommend optimal interest rate trajectories to the Bank of Canada's Governing Council under diverse macroeconomic scenarios.</p>
+              <p class="project-detail">Implemented Bayesian Vector Autoregression model with Minnesota priors using 9 macroeconomic variables, incorporating stationarity testing, seasonal adjustment, and posterior sampling with 2,000 draws to quantify forecast uncertainty through fan charts.</p>
+              <p class="project-detail">Quantified Bank of Canada's policy objectives of stable, low, and predictable inflation into mathematical optimization formula, testing thousands of different policy rate paths via Monte Carlo simulations to identify optimal interest rate trajectory with successful shock simulation capabilities for external economic disruptions.</p>
+            </div>
+            <a class="project-button" href="https://github.com/skp1008/BOC-Inflation-Forecasting" target="_blank" rel="noopener noreferrer">View Project</a>
+          </div>
       </div>
 
       <div class="project-item">
-        <div class="project-title"><span class="project-num">2)</span> OCR Processor for SOD Applications</div>
-        <div class="section-label">Problem</div>
-        <ul class="bullet-list">
-          <li>The Finance team manually keys applicant, address, and occupancy details from SOD applications.</li>
-          <li>Inconsistent entry and verification steps slow intake and review.</li>
-        </ul>
-        <div class="section-label">Technical Solution</div>
-        <ul class="bullet-list">
-          <li>Advanced OCR processing: Implements Azure Computer Vision with custom preprocessing to handle various form layouts and handwriting styles.</li>
-          <li>Structured data extraction: Uses pattern recognition and validation rules to extract names, addresses, and account numbers with confidence scoring.</li>
-          <li>System integration: Cross-references extracted data against the city's system of record to validate applicant information and flag discrepancies.</li>
-          <li>Automated workflow: Generates structured summaries with verification status, reducing manual review time by 80% while improving data consistency.</li>
-        </ul>
-        <a class="try-btn" href="/single-occupancy-discount.html">Try Now →</a>
-        <div class="sep"></div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Solow Growth Model Analysis 📈</h3>
+              <p class="project-company">Macroeconomics Research</p>
+              <p class="project-dates">SEP 2024 - DEC 2024</p>
+            </div>
+            <div class="project-details">
+              <p class="project-detail">Demonstrated empirical validation of Solow model predictions showing countries converge toward steady-state equilibrium with temporary deviations during major economic crises (2008/2009, 2020 pandemic).</p>
+              <p class="project-detail">Analyzed global economic interdependence patterns and regional correlations using a 28-country dataset (1992-2023), examining GDP growth correlations across income groups and identifying varying degrees of economic interdependence between North America, Latin America, and Asia.</p>
+              <p class="project-detail">Implemented Solow Growth Model framework to analyze capital accumulation dynamics across countries, calculating steady-state capital per worker using production function parameters and examining convergence behavior through law of motion for capital growth.</p>
+            </div>
+            <a class="project-button" href="https://github.com/skp1008/Macroeconomics-Solow-Growth-Model" target="_blank" rel="noopener noreferrer">View Project</a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <!-- Research Papers Section -->
+    <div class="section-header">
+      <div class="section-subtitle">ACADEMIC RESEARCH</div>
+      <h2 class="section-title">Research Papers.</h2>
+      <div class="section-sub-header">UBC - Economics</div>
+    </div>
+    
+    <div class="projects-container">
+      <div class="projects-list">
+      <div class="project-item">
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Impact of Carbon Pricing Policies on Renewable Energy Investments 🌱</h3>
+              <p class="project-company">University of British Columbia</p>
+              <p class="project-dates">JAN 2025 - APR 2025</p>
+            </div>
+            <div class="project-details">
+              <p class="project-detail">Investigated the impact of British Columbia's 2008 carbon tax on renewable energy investment levels by analyzing historical wind power development across Canadian provinces, addressing policy questions on the effectiveness of carbon pricing in stimulating green energy investments.</p>
+              <p class="project-detail">Applied Difference-in-Differences methodology using Canada's Wind Turbine Dataset (2000-2018) to establish causal relationships between carbon taxation and wind energy investment, implementing province fixed effects, three-year lag structures, and multiple control group configurations to address parallel trends assumptions.</p>
+              <p class="project-detail">Demonstrated that carbon tax implementation generated 552% greater increase in wind-generated electricity in British Columbia relative to control provinces, with stronger long-run effects when accounting for investment-to-output lag, demonstrating that carbon pricing mobilizes private capital toward renewable infrastructure.</p>
+            </div>
+            <a class="project-button" href="/frontend/ECON490_Paper_Krishna_Paudel.pdf" target="_blank" rel="noopener noreferrer">View Paper</a>
+          </div>
       </div>
 
       <div class="project-item">
-        <div class="project-title"><span class="project-num">3)</span> OCR Processor for Secondary Suite Exemption Forms</div>
-        <div class="section-label">Problem</div>
-        <ul class="bullet-list">
-          <li>Secondary suite exemption forms require repeated manual entry of owner and property details and checks against city records.</li>
-          <li>This creates backlogs and inconsistent summaries.</li>
-        </ul>
-        <div class="section-label">Technical Solution</div>
-        <ul class="bullet-list">
-          <li>Dual-file processing: Handles both CSV/Excel database uploads and multi-page PDF form processing in a unified pipeline.</li>
-          <li>Intelligent form parsing: Extracts owner/property metadata using OCR with custom validation rules for address formatting and account number verification.</li>
-          <li>Database matching engine: Implements fuzzy matching algorithms to correlate form data with city records, handling variations in address formats and owner names.</li>
-          <li>Comprehensive output: Generates standardized summaries with verification status, supporting approval workflows and downstream system updates.</li>
-        </ul>
-        <a class="try-btn" href="/secondary-suite-exemption.html">Try Now →</a>
-        <div class="sep"></div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Impact of Immigration on the Rental Housing Market in Canada 🏠</h3>
+              <p class="project-company">University of British Columbia</p>
+              <p class="project-dates">JAN 2025 - APR 2025</p>
+            </div>
+            <div class="project-details">
+              <p class="project-detail">Examined Canada's housing affordability crisis by analyzing the impact of immigration on rental market dynamics across 10 provinces, addressing critical policy questions surrounding the role of Canada's significant immigration inflows in exacerbating the housing crisis.</p>
+              <p class="project-detail">Applied panel regression, Dynamic OLS, and Fully Modified OLS methodologies to provincial data (2000-2023) examining causal relationships between immigration inflows and rental housing costs, incorporating fixed effects and autocorrelation corrections to mitigate endogeneity concerns.</p>
+              <p class="project-detail">Demonstrated that 1% population increase from immigration generates 0.236% rental price increase, with pronounced long-run versus short-run effects, establishing immigration as statistically significant yet moderate factor in housing cost escalation.</p>
+            </div>
+            <a class="project-button" href="/frontend/POLI482_Final_Paper_Krishna_Paudel.pdf" target="_blank" rel="noopener noreferrer">View Paper</a>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="project-item">
-        <div class="project-title"><span class="project-num">4)</span> Water Consumption Anomaly Detector</div>
-        <div class="section-label">Problem</div>
-        <ul class="bullet-list">
-          <li>Before quarterly bills, analysts manually scan usage to catch leaks (spikes) or dead meters/batteries (drops).</li>
-          <li>Reviewing thousands of accounts to find a few true issues is inefficient.</li>
-        </ul>
-        <div class="section-label">Technical Solution</div>
-        <ul class="bullet-list">
-          <li>Historical pattern analysis: Analyzes account-level consumption history to identify meters with previous leaks or dead batteries, examining cases where consumption values were significantly higher or lower than normal patterns.</li>
-          <li>Supervised learning implementation: Trains scikit-learn models using historical confirmed leaks and meter failures, incorporating consumption patterns, meter age, property characteristics, and seasonal variations to predict potential issues.</li>
-          <li>Unsupervised anomaly detection: Employs Isolation Forest algorithms to perform statistical anomaly detection, identifying unusual consumption patterns without requiring labeled training data by isolating data points that differ significantly from the majority.</li>
-          <li>Multi-algorithm ensemble: Combines results from both supervised and unsupervised learning approaches, applying additional filtering based on account details (meter age, ownership changes, seasonal patterns, neighborhood averages) to reduce false positives and improve detection accuracy.</li>
-          <li>Intelligent reporting: Generates comprehensive Excel outputs with flagged accounts, confidence scores, consumption patterns, and recommended actions, enabling city staff to efficiently identify and contact affected property owners.</li>
-        </ul>
-        <a class="try-btn" href="/water-consumption-anomaly.html">Try Now →</a>
-        <div class="sep"></div>
-      </div>
+    <!-- Software Solutions Section -->
+    <div class="section-header">
+      <div class="section-subtitle">PROFESSIONAL SOFTWARE DEVELOPMENT</div>
+      <h2 class="section-title">Software Solutions.</h2>
+      <div class="section-sub-header">City of Delta</div>
+    </div>
+    
+    <div class="projects-container">
+      <div class="projects-list">
+        <div class="project-item">
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">SQL Query Generator 🔍</h3>
+              <p class="project-department">Finance Department</p>
+              <p class="project-dates">MAY 2025 - AUG 2025</p>
+            </div>
+            <div class="section-label">Problem</div>
+            <div class="project-details">
+              <p class="project-detail">Finance team needed to query databases for payments and reconciliation but lacked SQL knowledge, creating dependencies on IT department for routine data requests.</p>
+            </div>
+            <div class="section-label">Technical Solution</div>
+            <div class="project-details">
+              <p class="project-detail">Built natural language to SQL conversion system using LlamaIndex RAG architecture with vector embeddings of database schema and historical query examples for accurate query generation.</p>
+              <p class="project-detail">Implemented LLaMA 3 model with custom fine-tuning on city's financial database structure and business rules, enabling context-aware SQL generation with validation and safety guardrails.</p>
+              <p class="project-detail">Created automated learning system that improves query accuracy over time by analyzing user feedback and maintaining conversation history for iterative query refinement.</p>
+            </div>
+            <a class="project-button" href="/sql-query-generator">Try Tool</a>
+          </div>
+        </div>
 
-      <div class="project-item">
-        <div class="project-title"><span class="project-num">5)</span> SQL Query Generator for City Finance and Analytics</div>
-        <div class="section-label">Problem</div>
-        <ul class="bullet-list">
-          <li>Finance needs to isolate payments, reconcile transactions, and answer ad‑hoc questions, but SQL queries depend on IT availability.</li>
-          <li>Routine requests are delayed and interruptive for both teams.</li>
-        </ul>
-        <div class="section-label">Technical Solution</div>
-        <ul class="bullet-list">
-          <li>RAG-powered architecture: Implements Retrieval-Augmented Generation using LlamaIndex to ground the LLM on real database schema and historical SQL examples, ensuring generated queries are accurate and follow established patterns.</li>
-          <li>Schema-aware generation: Uses HuggingFace embeddings to create vector representations of database tables, columns, and relationships, enabling the system to understand the actual structure of the city's financial databases.</li>
-          <li>MCP integration: Incorporates Model Context Protocol to provide the LLM with access to real-time database metadata, constraint information, and validation rules, ensuring generated queries respect data integrity and business rules.</li>
-          <li>Intelligent validation: Implements multi-layer validation including table/column existence checks, syntax validation, and safety guardrails to prevent harmful queries while maintaining flexibility for legitimate business needs.</li>
-          <li>Learning from feedback: Maintains chat history and learns from user corrections to avoid repeating errors and improve query generation accuracy over time.</li>
-          <li>Enterprise-grade deployment: Deployed on Railway with automated RAG index building during deployment, ensuring the system is always up-to-date with the latest schema changes and historical examples.</li>
-        </ul>
-        <a class="try-btn" href="/sql-query-generator.html">Try Now →</a>
+        <div class="project-item">
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Water Consumption Anomaly Detector 💧</h3>
+              <p class="project-department">Utilities Department</p>
+              <p class="project-dates">MAY 2025 - AUG 2025</p>
+            </div>
+            <div class="section-label">Problem</div>
+            <div class="project-details">
+              <p class="project-detail">Analysts manually review thousands of water accounts quarterly to identify potential leaks or meter failures, creating time-intensive workload with risk of missing critical issues.</p>
+            </div>
+            <div class="section-label">Technical Solution</div>
+            <div class="project-details">
+              <p class="project-detail">Built hybrid machine learning system combining supervised Random Forest and Gradient Boosting models trained on historical leak data with unsupervised Isolation Forest algorithms for comprehensive anomaly detection.</p>
+              <p class="project-detail">Implemented feature engineering processing consumption patterns, seasonal variations, and property characteristics with ensemble methods combining multiple algorithm outputs for improved accuracy.</p>
+              <p class="project-detail">Applied intelligent filtering using neighborhood consumption averages and account-specific rules to reduce false positives by 70%, generating automated reports with confidence scores.</p>
+            </div>
+            <a class="project-button" href="/water-consumption-anomaly">Try Tool</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Secondary Suite Exemption Form Processor 🏘️</h3>
+              <p class="project-department">Utilities Department</p>
+              <p class="project-dates">MAY 2025 - AUG 2025</p>
+            </div>
+            <div class="section-label">Problem</div>
+            <div class="project-details">
+              <p class="project-detail">Manual processing of property exemption forms creates backlogs and inconsistent data entry, requiring time-intensive cross-referencing with city records.</p>
+            </div>
+            <div class="section-label">Technical Solution</div>
+            <div class="project-details">
+              <p class="project-detail">Built automated form processing system using Azure Computer Vision API for OCR text extraction with custom validation rules for address formatting and account verification.</p>
+              <p class="project-detail">Implemented fuzzy string matching using rapidfuzz library to correlate extracted owner and property data with city records, handling variations in formatting with confidence scoring.</p>
+              <p class="project-detail">Generated standardized summaries with verification status and discrepancy flagging, eliminating processing backlogs and improving data consistency.</p>
+            </div>
+            <a class="project-button" href="/secondary-suite-exemption">Try Tool</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Single Occupancy Discount Application Processor 💰</h3>
+              <p class="project-department">Taxation Department</p>
+              <p class="project-dates">MAY 2025 - AUG 2025</p>
+            </div>
+            <div class="section-label">Problem</div>
+            <div class="project-details">
+              <p class="project-detail">Finance team manually processes discount applications with inconsistent data entry, causing verification delays and approval workflow bottlenecks.</p>
+            </div>
+            <div class="section-label">Technical Solution</div>
+            <div class="project-details">
+              <p class="project-detail">Implemented Azure Computer Vision API with custom preprocessing to handle various form layouts and handwriting recognition for improved OCR accuracy.</p>
+              <p class="project-detail">Applied pattern recognition using regex validation and confidence scoring to extract applicant names, addresses, and account numbers with error detection capabilities.</p>
+              <p class="project-detail">Built automated validation system cross-referencing extracted data against city property records, flagging discrepancies and reducing manual review time by 80%.</p>
+            </div>
+            <a class="project-button" href="/single-occupancy-discount">Try Tool</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-content">
+            <div class="project-header">
+              <h3 class="project-title">Meter Form Processor ⚡</h3>
+              <p class="project-department">Utilities Department</p>
+              <p class="project-dates">MAY 2025 - AUG 2025</p>
+            </div>
+            <div class="section-label">Problem</div>
+            <div class="project-details">
+              <p class="project-detail">Utilities team manually inputs account and meter serial numbers from meter inventory forms, creating time-consuming and error-prone data entry processes that delay billing updates.</p>
+            </div>
+            <div class="section-label">Technical Solution</div>
+            <div class="project-details">
+              <p class="project-detail">Built automated processing system using Azure Computer Vision API achieving 99%+ accuracy on structured utility forms with intelligent data extraction capabilities.</p>
+              <p class="project-detail">Implemented regex pattern matching and rapidfuzz fuzzy string matching algorithms to reliably capture account numbers and serial numbers despite OCR variations.</p>
+              <p class="project-detail">Created automated output system generating formatted Excel spreadsheets and organized PDF files for seamless distribution to billing teams.</p>
+            </div>
+            <a class="project-button" href="/meter-form-processor">Try Tool</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -237,5 +368,3 @@
   </script>
 </body>
 </html>
-
-
