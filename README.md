@@ -1,6 +1,6 @@
 # Krishna Paudel — Portfolio Website
 
-A modern, responsive personal website that highlights my background, projects, and tools I built for the City of Delta. The site is designed for clarity, speed, and a polished experience on desktop and mobile.
+A modern, responsive personal website that highlights my background, projects, and tools I have built. The site is designed for clarity, speed, and a polished experience on desktop and mobile.
 
 ## ✨ Highlights
 - Clean, high‑contrast UI with animated tech background and smooth interactions
